@@ -13,7 +13,7 @@ model = SentenceTransformer('all-MiniLM-L6-v2')
 
 df=pd.read_excel("events_summary.xlsx")
 
-
+df['embedding']=''
 df['embedding'] = df['event_summary'][:100].apply(lambda x: model.encode(x))
 
 def get_embedding(text_emb):
