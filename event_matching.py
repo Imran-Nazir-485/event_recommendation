@@ -26,7 +26,7 @@ def get_embedding(text_emb):
 
 # t=df['embedding_tensor'][0]
 
-t=df['embedding'][0].reshape(1, -1)
+t=df['embedding'][0]
 
 st.title("Event Matching")
 
@@ -34,7 +34,7 @@ input=st.text_input("Enter")
 if st.button("Recommend"):
   
   # Compute cosine similarity
-  df['similarity'] = df['embedding'][:100].apply(lambda x: cosine_similarity(x,t[0][0]))
+  df['similarity'] = df['embedding'][:100].apply(lambda x: cosine_similarity(x,t))
   
   # Filter rows with similarity >= 50% (0.5)
   similar_texts = df[df['similarity'] >= 0.8].sort_values(by='similarity', ascending=False)
