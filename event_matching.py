@@ -22,11 +22,20 @@ def get_embedding(text_emb):
 # Apply sentence embedding transformation
 df['embedding_tensor']=df['embedding'].apply(get_embedding)
 
+t=df['embedding_tensor'][0].reshape(1, -1)
+
+
 st.title("Event Matching")
 
 input=st.text_input("Enter")
-st.write(type(input))
+if st.button("Recommend"):
 
+  # Compute cosine similarity
+  df['similarity'] = df['embedding_tensor'].apply(lambda x: cosine_similarity(x,t[0][0])
+  
+  # Filter rows with similarity >= 50% (0.5)
+  similar_texts = df[df['similarity'] >= 0.8].sort_values(by='similarity', ascending=False)
 
-# Print the DataFrame with embeddings
-st.write(df)
+  # Display results
+  st.write(similar_texts[['text', 'similarity']])
+
