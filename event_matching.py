@@ -37,7 +37,7 @@ if st.button("Recommend"):
   df['similarity'] = df['embedding'][:100].apply(lambda x: cosine_similarity(x.reshape(1,-1),t.reshape(1,-1)))
   
   # Filter rows with similarity >= 50% (0.5)
-  st.write(df)
+  st.dataframe(df)
            # df['similarity'] >= 0.8].sort_values(by='similarity', ascending=False))
 
   # # Display results
