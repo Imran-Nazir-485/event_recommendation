@@ -31,7 +31,7 @@ t=df['embedding'][0]
 st.title("Event Matching")
 
 input=st.text_input("Enter")
-if st.button("Recommend") and input!="":
+if st.button("Recommend") and input!=None:
 
   # Encode the input text
   # input_embedding = model.encode(input).reshape(1, -1)  # Reshape to 2D array for cosine similarity
