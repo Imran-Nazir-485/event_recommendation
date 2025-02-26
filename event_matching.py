@@ -30,7 +30,7 @@ def get_embedding(text_emb):
 
 st.title("Event Recommendation")
 
-input=st.text_input("Enter User Information")
+input=st.text_area("Enter User Information")
 if st.button("Recommend") and input!="":
 
   Encode the input text
