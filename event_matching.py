@@ -34,7 +34,7 @@ input=st.text_input("Enter")
 if st.button("Recommend"):
   
   # Compute cosine similarity
-  df['similarity'] = df['embedding'][:100].apply(lambda x: cosine_similarity(x.reshape(1,-1),t.reshape(1,-1)))
+  df['similarity'] = df['embedding'][:100].apply(lambda x: cosine_similarity(x.reshape(1,-1),t.reshape(1,-1))[0][0])
   
   # Filter rows with similarity >= 50% (0.5)
   st.dataframe(df)
