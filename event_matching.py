@@ -31,7 +31,7 @@ t=df['embedding'][0]
 st.title("Event Matching")
 
 input=st.text_input("Enter")
-if st.button("Recommend") and input!=None:
+if st.button("Recommend") and input!="":
   # Compute cosine similarity
   df['similarity'] = df['embedding'][:100].apply(lambda x: cosine_similarity(x.reshape(1,-1),t.reshape(1,-1))[0][0])
   
