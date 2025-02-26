@@ -1,0 +1,5 @@
+langchain_community
+sentence_transformers
+langchain_openai
+langchainhub
+langchain_groq
