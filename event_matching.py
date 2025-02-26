@@ -14,7 +14,7 @@ model = SentenceTransformer('all-MiniLM-L6-v2')
 df=pd.read_excel("events_summary.xlsx")
 
 df['embedding']=''
-df['embedding'] = df['event_summary'][:100].apply(lambda x: model.encode(x))
+df['embedding'] = df['event_summary'].apply(lambda x: model.encode(x))
 
 def get_embedding(text_emb):
   t=[ast.literal_eval(i) for i in text_emb.split()[1:-1]]
@@ -26,18 +26,18 @@ def get_embedding(text_emb):
 
 # t=df['embedding_tensor'][0]
 
-t=df['embedding'][0]
+# t=df['embedding'][0]
 
-st.title("Event Matching")
+st.title("Event Recommendation")
 
-input=st.text_input("Enter")
-if st.button("Recommend") and input!=None:
+input=st.text_input("Enter User Information")
+if st.button("Recommend") and input!="":
 
-  # Encode the input text
-  # input_embedding = model.encode(input).reshape(1, -1)  # Reshape to 2D array for cosine similarity
+  Encode the input text
+  input_embedding = model.encode(input).reshape(1, -1)  # Reshape to 2D array for cosine similarity
 
   # Compute cosine similarity
-  df['similarity'] = df['embedding'][:100].apply(lambda x: cosine_similarity([x],t.reshape(1,-1))[0][0])
+  df['similarity'] = df['embedding'].apply(lambda x: cosine_similarity([x],input_embedding)[0][0])
   
   # Filter rows with similarity >= 50% (0.5)
   similar_texts=df[df['similarity'] >= 0.60].sort_values(by='similarity', ascending=False)
