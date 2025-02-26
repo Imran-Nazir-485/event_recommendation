@@ -40,5 +40,5 @@ if st.button("Recommend"):
   similar_texts = df[df['similarity'] >= 0.8].sort_values(by='similarity', ascending=False)
 
   # Display results
-  st.write(similar_texts)
+  st.write(similar_texts['similarity'])
 
