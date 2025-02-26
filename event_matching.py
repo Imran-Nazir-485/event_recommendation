@@ -22,7 +22,7 @@ def get_embedding(text_emb):
 # Apply sentence embedding transformation
 df['embedding_tensor']=df['embedding'].apply(get_embedding)
 
-t=df['embedding_tensor'][0].reshape(1, -1)
+t=df['embedding_tensor'][0]
 
 
 st.title("Event Matching")
