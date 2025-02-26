@@ -31,7 +31,7 @@ input=st.text_input("Enter")
 if st.button("Recommend"):
 
   # Compute cosine similarity
-  df['similarity'] = df['embedding_tensor'].apply(lambda x: cosine_similarity(x,t))
+  df['similarity'] = df['embedding_tensor'].apply(lambda x: cosine_similarity(x.reshape(1, -1),t))
   
   # Filter rows with similarity >= 50% (0.5)
   similar_texts = df[df['similarity'] >= 0.8].sort_values(by='similarity', ascending=False)
