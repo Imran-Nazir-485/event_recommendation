@@ -32,8 +32,12 @@ st.title("Event Matching")
 
 input=st.text_input("Enter")
 if st.button("Recommend") and input!="":
+
+  # Encode the input text
+  # input_embedding = model.encode(input).reshape(1, -1)  # Reshape to 2D array for cosine similarity
+
   # Compute cosine similarity
-  df['similarity'] = df['embedding'][:100].apply(lambda x: cosine_similarity(x.reshape(1,-1),t.reshape(1,-1))[0][0])
+  df['similarity'] = df['embedding'][:100].apply(lambda x: cosine_similarity([x],t.reshape(1,-1))[0][0])
   
   # Filter rows with similarity >= 50% (0.5)
   similar_texts=df[df['similarity'] >= 0.60].sort_values(by='similarity', ascending=False)
