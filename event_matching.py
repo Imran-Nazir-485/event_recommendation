@@ -2,6 +2,7 @@ import pandas as pd
 import streamlit as st
 from langchain_openai import ChatOpenAI
 import os
+import torch
 from langchain.embeddings import HuggingFaceEmbeddings
 from sentence_transformers import SentenceTransformer
 # Load Sentence Transformer model
