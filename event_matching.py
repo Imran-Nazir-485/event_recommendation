@@ -37,9 +37,8 @@ if st.button("Recommend"):
   df['similarity'] = df['embedding'][:100].apply(lambda x: cosine_similarity(x.reshape(1,-1),t.reshape(1,-1))[0][0])
   
   # Filter rows with similarity >= 50% (0.5)
-  st.dataframe(df)
-           # df['similarity'] >= 0.8].sort_values(by='similarity', ascending=False))
+  similar_texts=df[df['similarity'] >= 0.8].sort_values(by='similarity', ascending=False)
 
   # # Display results
-  # st.write(similar_texts['similarity'])
+  st.write(similar_texts[['title', 'location', 'address', 'category','description', 'organizer','tags']])
 
