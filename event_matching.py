@@ -33,7 +33,7 @@ st.title("Event Recommendation")
 input=st.text_area("Enter User Information")
 if st.button("Recommend") and input!="":
 
-  Encode the input text
+  #Encode the input text
   input_embedding = model.encode(input).reshape(1, -1)  # Reshape to 2D array for cosine similarity
 
   # Compute cosine similarity
