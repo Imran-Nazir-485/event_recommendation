@@ -4,6 +4,8 @@ from langchain_openai import ChatOpenAI
 import os
 import torch
 import ast
+import numpy as np
+from sklearn.metrics.pairwise import cosine_similarity
 from langchain.embeddings import HuggingFaceEmbeddings
 from sentence_transformers import SentenceTransformer
 # Load Sentence Transformer model
@@ -21,6 +23,10 @@ def get_embedding(text_emb):
 df['embedding_tensor']=df['embedding'].apply(get_embedding)
 
 st.title("Event Matching")
+
+input=st.text_input("Enter")
+st.write(type(input))
+
 
 # Print the DataFrame with embeddings
 st.write(df)
