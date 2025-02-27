@@ -13,13 +13,73 @@ model = SentenceTransformer('all-MiniLM-L6-v2')
 
 df=pd.read_excel("events_summary.xlsx")
 
-df['embedding']=''
-df['embedding'] = df['event_summary'].apply(lambda x: model.encode(x))
+# df['embedding']=''
+# df['embedding'] = df['event_summary'].apply(lambda x: model.encode(x))
 
 def get_embedding(text_emb):
   t=[ast.literal_eval(i) for i in text_emb.split()[1:-1]]
   t=torch.tensor(t)
   return t
+
+
+import sqlite3
+import pandas as pd
+import json
+import numpy as np
+
+# Connect to SQLite database
+conn = sqlite3.connect('embeddings1.db')
+cursor = conn.cursor()
+
+# Retrieve all records from the database
+cursor.execute("SELECT * FROM events")
+rows = cursor.fetchall()
+
+# Get column names
+columns = [desc[0] for desc in cursor.description]
+
+# Close connection
+conn.close()
+
+# Function to convert JSON string back to a list
+def convert_json_to_list(json_str):
+    try:
+        return json.loads(json_str) if json_str else []
+    except json.JSONDecodeError:
+        return []
+
+# Function to convert binary BLOB back to NumPy array
+def convert_blob_to_embedding(blob):
+    return np.frombuffer(blob, dtype=np.float32) if blob else None
+
+# Reconstruct DataFrame
+df = pd.DataFrame(rows, columns=columns)
+
+# Convert 'tags' column from JSON string back to list
+df['tags'] = df['tags'].apply(convert_json_to_list)
+
+# Convert 'embedding' column from BLOB back to NumPy array
+df['embedding'] = df['embedding'].apply(convert_blob_to_embedding)
+
+# Display reconstructed DataFrame
+# print(df_reconstructed.head())
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 # # Apply sentence embedding transformation
 # df['embedding_tensor']=df['embedding'].apply(get_embedding)
