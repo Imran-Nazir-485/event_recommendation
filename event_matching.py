@@ -28,7 +28,7 @@ import json
 import numpy as np
 
 # Connect to SQLite database
-conn = sqlite3.connect('embeddings1.db')
+conn = sqlite3.connect('embeddings.db')
 cursor = conn.cursor()
 
 # Retrieve all records from the database
@@ -70,7 +70,7 @@ df['embedding'] = df['embedding'].apply(convert_blob_to_embedding)
 
 
 
-
+st.write(df)
 
 
 
