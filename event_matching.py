@@ -70,7 +70,7 @@ df['embedding'] = df['embedding'].apply(convert_blob_to_embedding)
 
 
 
-st.write(df)
+st.dataframe(df)
 
 
 
