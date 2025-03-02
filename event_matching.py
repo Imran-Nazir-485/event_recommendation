@@ -73,7 +73,7 @@ df['embedding'] = df['embedding'].apply(convert_blob_to_embedding)
 
 
 # st.dataframe(df)
-st.write(profile_summary)
+# st.write(profile_summary)
 
 
 
