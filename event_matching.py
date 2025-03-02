@@ -136,14 +136,14 @@ if selection=="Event Recommendation":
 
   # Ensure both are numpy arrays
   embedding_1 = np.array(df['embedding'][0]).reshape(1, -1)
-  embedding_2 = np.array(embeddings).reshape(1, -1)
+  embedding_2 = np.array(embeddings[0).reshape(1, -1)
 
   st.write(type(embedding_1))
   st.write(type(embedding_2))
 
   
   # Compute cosine similarity
-  # similarity = cosine_similarity(embedding_1, embedding_2)
+  similarity = cosine_similarity(embedding_1, embedding_2)
   
   # cosine_similarity([df['embedding'][0]],embeddings.reshape(1,-1))
   # .apply(lambda x: cosine_similarity([x],embeddings.reshape(1,-1)))
