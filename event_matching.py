@@ -131,7 +131,7 @@ if selection=="Event Recommendation":
 #   input_embedding = model.encode(input).reshape(1, -1)  # Reshape to 2D array for cosine similarity
 
 #   # Compute cosine similarity
-  df['similarity'] = df['embedding'].apply(lambda x: cosine_similarity([x],input_embedding)[0][0])
+  df['similarity'] = df['embedding'].apply(lambda x: cosine_similarity([x],embeddings)[0][0])
   
 #   # Filter rows with similarity >= 50% (0.5)
 #   similar_texts=df[df['similarity'] >= 0.60].sort_values(by='similarity', ascending=False)
