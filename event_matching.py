@@ -139,7 +139,7 @@ if selection=="Event Recommendation":
   embedding_2 = np.array(embeddings).reshape(1, -1)
 
   st.write(type(embedding_1))
-  st.write(embedding_2)
+  st.write(type(embedding_2))
 
   
   # Compute cosine similarity
