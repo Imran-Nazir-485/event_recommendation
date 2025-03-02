@@ -96,8 +96,8 @@ conn = sqlite3.connect('profiles_db.db')
 cursor1 = conn.cursor()
 
 # Retrieve all records from the database
-cursor.execute("SELECT * FROM profiles")
-rows = cursor.fetchall()
+cursor1.execute("SELECT * FROM profiles")
+rows = cursor1.fetchall()
 
 # Get column names
 columns = [desc[0] for desc in cursor.description]
