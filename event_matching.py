@@ -143,10 +143,9 @@ if selection=="Event Recommendation":
 
   
   # Compute cosine similarity
-  similarity = cosine_similarity(embedding_1, embedding_2)
+  # similarity = cosine_similarity(embedding_1, embedding_2)
   
-  # cosine_similarity([df['embedding'][0]],embeddings.reshape(1,-1))
-  # .apply(lambda x: cosine_similarity([x],embeddings.reshape(1,-1)))
+  df['embedding'].apply(lambda x: cosine_similarity([x],embeddings[0].reshape(1,-1)))
   
 #   # Filter rows with similarity >= 50% (0.5)
 #   similar_texts=df[df['similarity'] >= 0.60].sort_values(by='similarity', ascending=False)
