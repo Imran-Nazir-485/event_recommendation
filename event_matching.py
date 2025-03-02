@@ -123,7 +123,7 @@ selection=st.sidebar.selectbox(
 if selection=="Event Recommendation":
   profile_id=st.selectbox("Select",profile_df["profile_id"])
   embeddings=profile_df[profile_df["profile_id"]==profile_id]['embeddings'].values
-  st.write(embeddings.values)
+  st.write(embeddings)
 
 # input=st.text_area("Enter User Information")
 # if st.button("Recommend") and input!="":
