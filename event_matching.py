@@ -23,8 +23,53 @@ def get_embedding(text_emb):
   t=torch.tensor(t)
   return t
 
+
+
+
+
+
+
+
+
+import gdown
+
+# https://drive.google.com/file/d/1NV-lLB8MXRCHH73gHQC7Qyq60qhHxPmN/view?usp=sharing
+
+# Google Drive File ID
+file_id = "1NV-lLB8MXRCHH73gHQC7Qyq60qhHxPmN"
+output_file = "10_events_embedding.db"
+
+# Download the file
+@st.cache_data
+def download_db():
+    url = f"https://drive.google.com/uc?id={file_id}"
+    gdown.download(url, output_file, quiet=False)
+    return output_file
+
+# Load the database
+def load_database():
+    db_file = download_db()
+    conn = sqlite3.connect(db_file)
+    return conn
+
+# Streamlit UI
+st.title("Access SQLite DB from Google Drive")
+
+conn = load_database()
+cursor = conn.cursor()
+# cursor.execute("SELECT name FROM sqlite_master WHERE type='table';")
+# tables = cursor.fetchall()
+
+# st.write("Tables in the database:", tables)
+
+# conn.close()
+
+
+
+
+
 # Connect to SQLite database
-conn = sqlite3.connect('embeddings.db')
+# conn = sqlite3.connect('embeddings.db')
 cursor = conn.cursor()
 
 # Retrieve all records from the database
