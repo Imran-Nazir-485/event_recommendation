@@ -13,6 +13,8 @@ model = SentenceTransformer('all-MiniLM-L6-v2')
 
 df=pd.read_excel("events_summary.xlsx")
 
+profile_summary=pd.read_excel("profile_summary_combine.xlsx")
+
 # df['embedding']=''
 # df['embedding'] = df['event_summary'].apply(lambda x: model.encode(x))
 
@@ -70,7 +72,8 @@ df['embedding'] = df['embedding'].apply(convert_blob_to_embedding)
 
 
 
-st.dataframe(df)
+# st.dataframe(df)
+st.write(profile_summary)
 
 
 
