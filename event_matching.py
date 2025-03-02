@@ -164,6 +164,8 @@ if selection=="Event Recommendation":
 
 #Display results
   st.dataframe(similar_texts[['similarity','title', 'location', 'address', 'category','description', 'organizer','tags']])
+  st.subheader("User Profile", profile_id)
+  st.write(profile_df[profile_df["profile_id"]==profile_id]['profile_summary'])
 #   # st.write(df)
 
 
