@@ -149,6 +149,7 @@ if selection=="Event Recommendation":
   
 #   # Filter rows with similarity >= 50% (0.5)
   similar_texts=df[df['similarity'] >= 0.50].sort_values(by='similarity', ascending=False)
+  st.write(similar_texts.shape)
 
 #   # # Display results
   st.dataframe(similar_texts[['similarity','title', 'location', 'address', 'category','description', 'organizer','tags']])
