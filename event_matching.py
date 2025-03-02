@@ -134,7 +134,7 @@ if selection=="Event Recommendation":
 #   # Compute cosine similarity
   # df['embedding'][0]
   
-  cosine_similarity([df['embedding'][0]],embeddings.reshape(1,-1)
+  cosine_similarity([df['embedding'][0]],embeddings.reshape(1,-1))
   # .apply(lambda x: cosine_similarity([x],embeddings.reshape(1,-1)))
   
 #   # Filter rows with similarity >= 50% (0.5)
