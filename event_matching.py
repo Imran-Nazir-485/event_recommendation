@@ -11,6 +11,8 @@ from sentence_transformers import SentenceTransformer
 import sqlite3
 import json
 import numpy as np
+import gdown
+
 # Load Sentence Transformer model
 model = SentenceTransformer('all-MiniLM-L6-v2')
 
@@ -24,17 +26,7 @@ def get_embedding(text_emb):
   return t
 
 
-
-
-
-
-
-
-
-import gdown
-
 # https://drive.google.com/file/d/1NV-lLB8MXRCHH73gHQC7Qyq60qhHxPmN/view?usp=sharing
-
 # Google Drive File ID
 file_id = "1NV-lLB8MXRCHH73gHQC7Qyq60qhHxPmN"
 output_file = "10_events_embedding.db"
@@ -52,20 +44,13 @@ def load_database():
     conn = sqlite3.connect(db_file)
     return conn
 
-# Streamlit UI
-st.title("Access SQLite DB from Google Drive")
-
 conn = load_database()
 cursor = conn.cursor()
+
 # cursor.execute("SELECT name FROM sqlite_master WHERE type='table';")
 # tables = cursor.fetchall()
-
 # st.write("Tables in the database:", tables)
-
 # conn.close()
-
-
-
 
 
 # Connect to SQLite database
@@ -102,7 +87,7 @@ df['tags'] = df['tags'].apply(convert_json_to_list)
 # Convert 'embedding' column from BLOB back to NumPy array
 df['embedding'] = df['embedding'].apply(convert_blob_to_embedding)
 
-st.write(df.shape)
+st.write(df)
 
 ######################################################################################################################################################
 
