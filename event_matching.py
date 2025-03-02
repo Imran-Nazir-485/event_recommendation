@@ -90,23 +90,29 @@ st.write(profile_summary)
 # t=df['embedding_tensor'][0]
 
 # t=df['embedding'][0]
-
 st.title("Event Recommendation")
 
-input=st.text_area("Enter User Information")
-if st.button("Recommend") and input!="":
+selection=st.sidebar.selectbox(
+    "☰ Menu",
+    ["Event Recommendation", "Option 2", "Option 3"])
 
-  #Encode the input text
-  input_embedding = model.encode(input).reshape(1, -1)  # Reshape to 2D array for cosine similarity
+if selection=="Event Recommendation":
+  st.selectbox("Select",profile_summary["id"])
 
-  # Compute cosine similarity
-  df['similarity'] = df['embedding'].apply(lambda x: cosine_similarity([x],input_embedding)[0][0])
+# input=st.text_area("Enter User Information")
+# if st.button("Recommend") and input!="":
+
+#   #Encode the input text
+#   input_embedding = model.encode(input).reshape(1, -1)  # Reshape to 2D array for cosine similarity
+
+#   # Compute cosine similarity
+#   df['similarity'] = df['embedding'].apply(lambda x: cosine_similarity([x],input_embedding)[0][0])
   
-  # Filter rows with similarity >= 50% (0.5)
-  similar_texts=df[df['similarity'] >= 0.60].sort_values(by='similarity', ascending=False)
+#   # Filter rows with similarity >= 50% (0.5)
+#   similar_texts=df[df['similarity'] >= 0.60].sort_values(by='similarity', ascending=False)
 
-  # # Display results
-  # st.write(similar_texts[['similarity','title', 'location', 'address', 'category','description', 'organizer','tags']])
-  st.write(df)
+#   # # Display results
+#   # st.write(similar_texts[['similarity','title', 'location', 'address', 'category','description', 'organizer','tags']])
+#   st.write(df)
 
 
