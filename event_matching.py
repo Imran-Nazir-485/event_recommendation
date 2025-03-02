@@ -93,10 +93,10 @@ df['embedding'] = df['embedding'].apply(convert_blob_to_embedding)
 
 # Connect to SQLite database
 conn = sqlite3.connect('profiles_db.db')
-cursor = conn.cursor()
+cursor1 = conn.cursor()
 
 # Retrieve all records from the database
-cursor.execute("SELECT * FROM events")
+cursor.execute("SELECT * FROM profiles")
 rows = cursor.fetchall()
 
 # Get column names
