@@ -91,56 +91,56 @@ st.write(df)
 
 ######################################################################################################################################################
 
-# # Connect to SQLite database
-# conn = sqlite3.connect('profiles_db.db')
-# cursor = conn.cursor()
+# Connect to SQLite database
+conn = sqlite3.connect('profiles_db.db')
+cursor = conn.cursor()
 
-# # Retrieve all records from the database
-# cursor.execute("SELECT * FROM events")
-# rows = cursor.fetchall()
+# Retrieve all records from the database
+cursor.execute("SELECT * FROM events")
+rows = cursor.fetchall()
 
-# # Get column names
-# columns = [desc[0] for desc in cursor.description]
+# Get column names
+columns = [desc[0] for desc in cursor.description]
 
-# # Close connection
-# conn.close()
+# Close connection
+conn.close()
 
-# # Function to convert JSON string back to a list
-# def convert_json_to_list(json_str):
-#     try:
-#         return json.loads(json_str) if json_str else []
-#     except json.JSONDecodeError:
-#         return []
+# Function to convert JSON string back to a list
+def convert_json_to_list(json_str):
+    try:
+        return json.loads(json_str) if json_str else []
+    except json.JSONDecodeError:
+        return []
 
-# # Function to convert binary BLOB back to NumPy array
-# def convert_blob_to_embedding(blob):
-#     return np.frombuffer(blob, dtype=np.float32) if blob else None
+# Function to convert binary BLOB back to NumPy array
+def convert_blob_to_embedding(blob):
+    return np.frombuffer(blob, dtype=np.float32) if blob else None
 
-# # Reconstruct DataFrame
-# profile_df = pd.DataFrame(rows, columns=columns)
+# Reconstruct DataFrame
+profile_df = pd.DataFrame(rows, columns=columns)
 
-# # Convert 'embedding' column from BLOB back to NumPy array
-# profile_df['embeddings'] = profile_df['embeddings'].apply(convert_blob_to_embedding)
+# Convert 'embedding' column from BLOB back to NumPy array
+profile_df['embeddings'] = profile_df['embeddings'].apply(convert_blob_to_embedding)
 
 
 # st.write(df.shape)
 
-# st.title("Event Recommendation")
+st.title("Event Recommendation")
 
-# selection=st.sidebar.selectbox(
-#     "☰ Menu",
-#     ["Event Recommendation", "Option 2", "Option 3"])
+selection=st.sidebar.selectbox(
+    "☰ Menu",
+    ["Event Recommendation", "Option 2", "Option 3"])
 
-# if selection=="Event Recommendation":
-#   profile_id=st.selectbox("Select",profile_df["profile_id"])
-#   embeddings=profile_df[profile_df["profile_id"]==profile_id]['embeddings'].values
-#   # st.write(embeddings[0])
+if selection=="Event Recommendation":
+  profile_id=st.selectbox("Select",profile_df["profile_id"])
+  embeddings=profile_df[profile_df["profile_id"]==profile_id]['embeddings'].values
+  # st.write(embeddings[0])
 
-# # input=st.text_area("Enter User Information")
-# # if st.button("Recommend") and input!="":
+# input=st.text_area("Enter User Information")
+# if st.button("Recommend") and input!="":
 
-# #   #Encode the input text
-# #   input_embedding = model.encode(input).reshape(1, -1)  # Reshape to 2D array for cosine similarity
+#   #Encode the input text
+#   input_embedding = model.encode(input).reshape(1, -1)  # Reshape to 2D array for cosine similarity
 
 # #   # Compute cosine similarity
 #   # df['embedding'][0]
@@ -156,14 +156,14 @@ st.write(df)
 #   # Compute cosine similarity
 #   # similarity = cosine_similarity(embedding_1, embedding_2)
   
-#   df['similarity']=df['embedding'].apply(lambda x: cosine_similarity([x],embeddings[0].reshape(1,-1))[0][0])
+  df['similarity']=df['embedding'].apply(lambda x: cosine_similarity([x],embeddings[0].reshape(1,-1))[0][0])
   
-# #   # Filter rows with similarity >= 50% (0.5)
-#   similar_texts=df[df['similarity'] >= 0.50].sort_values(by='similarity', ascending=False)
+#Filter rows with similarity >= 50% (0.5)
+  similar_texts=df[df['similarity'] >= 0.50].sort_values(by='similarity', ascending=False)
 #   st.write(similar_texts.shape)
 
-# #   # # Display results
-#   st.dataframe(similar_texts[['similarity','title', 'location', 'address', 'category','description', 'organizer','tags']])
+#Display results
+  st.dataframe(similar_texts[['similarity','title', 'location', 'address', 'category','description', 'organizer','tags']])
 #   # st.write(df)
 
 
