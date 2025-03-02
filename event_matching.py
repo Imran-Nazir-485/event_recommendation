@@ -138,7 +138,7 @@ if selection=="Event Recommendation":
   embedding_1 = np.array(df['embedding'][0]).reshape(1, -1)
   embedding_2 = np.array(embeddings).reshape(1, -1)
 
-  st.write(embedding_1)
+  st.write(type(embedding_1))
   st.write(embedding_2)
 
   
