@@ -148,7 +148,7 @@ if selection=="Event Recommendation":
   df['similarity']=df['embedding'].apply(lambda x: cosine_similarity([x],embeddings[0].reshape(1,-1))[0][0])
   
 #   # Filter rows with similarity >= 50% (0.5)
-#   similar_texts=df[df['similarity'] >= 0.60].sort_values(by='similarity', ascending=False)
+  similar_texts=df[df['similarity'] >= 0.50].sort_values(by='similarity', ascending=False)
 
 #   # # Display results
   st.write(similar_texts[['similarity','title', 'location', 'address', 'category','description', 'organizer','tags']])
