@@ -134,24 +134,24 @@ if selection=="Event Recommendation":
 #   # Compute cosine similarity
   # df['embedding'][0]
 
-  # Ensure both are numpy arrays
-  embedding_1 = np.array(df['embedding'][0]).reshape(1, -1)
-  embedding_2 = np.array(embeddings[0]).reshape(1, -1)
+  # # Ensure both are numpy arrays
+  # embedding_1 = np.array(df['embedding'][0]).reshape(1, -1)
+  # embedding_2 = np.array(embeddings[0]).reshape(1, -1)
 
-  st.write(embedding_1)
-  st.write(embedding_2)
+  # st.write(embedding_1)
+  # st.write(embedding_2)
 
   
   # Compute cosine similarity
   # similarity = cosine_similarity(embedding_1, embedding_2)
   
-  df['embedding'].apply(lambda x: cosine_similarity([x],embeddings[0].reshape(1,-1)))
+  df['similarity']=df['embedding'].apply(lambda x: cosine_similarity([x],embeddings[0].reshape(1,-1)))
   
 #   # Filter rows with similarity >= 50% (0.5)
 #   similar_texts=df[df['similarity'] >= 0.60].sort_values(by='similarity', ascending=False)
 
 #   # # Display results
 #   # st.write(similar_texts[['similarity','title', 'location', 'address', 'category','description', 'organizer','tags']])
-  # st.write(df)
+  st.write(df)
 
 
