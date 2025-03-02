@@ -91,29 +91,8 @@ profile_df = pd.DataFrame(rows, columns=columns)
 profile_df['embeddings'] = profile_df['embeddings'].apply(convert_blob_to_embedding)
 
 
+st.write(df.shape)
 
-
-
-
-
-# st.dataframe(df)
-# st.write(profile_summary)
-
-
-
-
-
-
-
-
-
-
-# # Apply sentence embedding transformation
-# df['embedding_tensor']=df['embedding'].apply(get_embedding)
-
-# t=df['embedding_tensor'][0]
-
-# t=df['embedding'][0]
 st.title("Event Recommendation")
 
 selection=st.sidebar.selectbox(
