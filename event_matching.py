@@ -97,7 +97,7 @@ selection=st.sidebar.selectbox(
     ["Event Recommendation", "Option 2", "Option 3"])
 
 if selection=="Event Recommendation":
-  st.selectbox("Select",profile_summary["id"])
+  st.selectbox("Select",profile_summary["profile_id"])
 
 # input=st.text_area("Enter User Information")
 # if st.button("Recommend") and input!="":
