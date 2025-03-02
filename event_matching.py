@@ -62,7 +62,7 @@ st.write(df.shape)
 ######################################################################################################################################################
 
 # # Connect to SQLite database
-# conn = sqlite3.connect('profile_embedding.db')
+# conn = sqlite3.connect('profiles_db.db')
 # cursor = conn.cursor()
 
 # # Retrieve all records from the database
