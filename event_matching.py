@@ -87,7 +87,7 @@ df['tags'] = df['tags'].apply(convert_json_to_list)
 # Convert 'embedding' column from BLOB back to NumPy array
 df['embedding'] = df['embedding'].apply(convert_blob_to_embedding)
 
-st.write(df)
+# st.write(df)
 
 ######################################################################################################################################################
 
