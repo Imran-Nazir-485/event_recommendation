@@ -122,7 +122,7 @@ selection=st.sidebar.selectbox(
 
 if selection=="Event Recommendation":
   profile_id=st.selectbox("Select",profile_df["profile_id"])
-  # profile_summary[profile_summary["profile_id"]==profile_id][]
+  embeddings=profile_df[profile_df["profile_id"]==profile_id]['embeddings']
 
 # input=st.text_area("Enter User Information")
 # if st.button("Recommend") and input!="":
@@ -131,13 +131,13 @@ if selection=="Event Recommendation":
 #   input_embedding = model.encode(input).reshape(1, -1)  # Reshape to 2D array for cosine similarity
 
 #   # Compute cosine similarity
-#   df['similarity'] = df['embedding'].apply(lambda x: cosine_similarity([x],input_embedding)[0][0])
+  df['similarity'] = df['embedding'].apply(lambda x: cosine_similarity([x],input_embedding)[0][0])
   
 #   # Filter rows with similarity >= 50% (0.5)
 #   similar_texts=df[df['similarity'] >= 0.60].sort_values(by='similarity', ascending=False)
 
 #   # # Display results
 #   # st.write(similar_texts[['similarity','title', 'location', 'address', 'category','description', 'organizer','tags']])
-#   st.write(df)
+  st.write(df)
 
 
