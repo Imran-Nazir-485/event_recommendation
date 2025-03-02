@@ -151,7 +151,7 @@ if selection=="Event Recommendation":
 #   similar_texts=df[df['similarity'] >= 0.60].sort_values(by='similarity', ascending=False)
 
 #   # # Display results
-#   # st.write(similar_texts[['similarity','title', 'location', 'address', 'category','description', 'organizer','tags']])
-  st.write(df)
+  st.write(similar_texts[['similarity','title', 'location', 'address', 'category','description', 'organizer','tags']])
+  # st.write(df)
 
 
