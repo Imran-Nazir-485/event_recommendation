@@ -14,7 +14,7 @@ import numpy as np
 import gdown
 
 # Load Sentence Transformer model
-model = SentenceTransformer('all-MiniLM-L6-v2')
+# model = SentenceTransformer('all-MiniLM-L6-v2')
 
 df=pd.read_excel("events_summary.xlsx")
 profile_summary=pd.read_excel("profile_summary_combine.xlsx")
