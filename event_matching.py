@@ -17,6 +17,8 @@ from dotenv import load_dotenv
 load_dotenv()
 # Load Sentence Transformer model
 # model = SentenceTransformer('all-MiniLM-L6-v2')
+# Page Layout
+st.set_page_config(page_title="Profilkarte", layout="centered")
 
 # df=pd.read_excel("events_summary.xlsx")
 # profile_summary=pd.read_excel("profile_summary_combine.xlsx")
