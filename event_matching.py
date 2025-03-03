@@ -233,7 +233,7 @@ if selection=="Recommended":
 
 if selection=="My Profile":
   profile_id=st.selectbox("Select",profile_df["profile_id"])
-  my_profile=profile_df[profile_df["profile_id"]==profile_id].values
+  my_profile=profile_df[profile_df["profile_id"]==profile_id]['profile_summary'].values[0]
   st.write(my_profile)
 
 
