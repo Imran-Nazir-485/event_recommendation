@@ -29,7 +29,7 @@ def get_embedding(text_emb):
 
 
 def get_prompt(profile_data):
-  return f """
+  return f"""
   Extract key details from the following user profile data:
 
   1. **Location**: Extract the city and country (if available).
