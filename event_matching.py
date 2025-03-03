@@ -276,7 +276,7 @@ if selection=="My Profile":
   
     
   # Page Layout
-  st.set_page_config(page_title="Profilkarte", layout="centered")
+  # st.set_page_config(page_title="Profilkarte", layout="centered")
   
   # Profile Card
   st.markdown(
