@@ -218,7 +218,7 @@ if selection=="Recommended":
       # Generate first event
       event_name1 = event_titles[i]
       event_date1 = date[i]
-      city1 = city[i]
+      city1 = cities[i]
       price1 = prices[i]
   
       event_html1 = f"""
@@ -236,7 +236,7 @@ if selection=="Recommended":
       if i + 1 < num_events:
           event_name2 = event_titles[i+1]
           event_date2 = date[i+1]
-          city2 = city[i+1]
+          city2 = cities[i+1]
           price2 = prices[i+1]
   
           event_html2 = f"""
