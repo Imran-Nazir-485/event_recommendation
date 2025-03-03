@@ -129,11 +129,11 @@ df['embedding'] = df['embedding'].apply(convert_blob_to_embedding)
 ######################################################################################################################################################
 
 # Connect to SQLite database
-conn = sqlite3.connect('profiles_db.db')
+conn = sqlite3.connect('profiles_data.db')
 cursor = conn.cursor()
 
 # Retrieve all records from the database
-cursor.execute("SELECT * FROM profiles")
+cursor.execute("SELECT * FROM user_profiles")
 rows = cursor.fetchall()
 
 # Get column names
@@ -270,11 +270,11 @@ if selection=="Recommended":
 
 if selection=="My Profile":
   profile_id=st.selectbox("Select",profile_df["profile_id"])
-  my_profile=profile_df[profile_df["profile_id"]==profile_id]['profile_summary'].values[0]
+  my_profile=profile_df[profile_df["profile_id"]==profile_id]['profile_data'].values[0]
   # st.write(my_profile)
-  user_data=llm.invoke(get_prompt(my_profile)).content
-  st.write(user_data)
-  user_data=json.loads(user_data[3:-3])
+  # user_data=llm.invoke(get_prompt(my_profile)).content
+  st.write(my_profile)
+  user_data=json.loads(my_profile)
   
   
   
