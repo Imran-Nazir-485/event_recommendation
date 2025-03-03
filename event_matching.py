@@ -165,7 +165,61 @@ if selection=="Recommended":
 #Display results
   st.dataframe(similar_texts[['similarity','title', 'location', 'address','price', 'category','link','description','refund_policy', 'organizer','tags']])
   st.subheader("User Profile", profile_id)
-  st.write(profile_df[profile_df["profile_id"]==profile_id]['profile_summary'].values[0])
+  # st.write(profile_df[profile_df["profile_id"]==profile_id]['profile_summary'].values[0])
 #   # st.write(df)
 
 
+  import streamlit as st
+  import random
+  
+  # Custom CSS for styling
+  st.markdown("""
+      <style>
+      .event-tile {
+          background-color: #1E1E1E;
+          padding: 15px;
+          border-radius: 10px;
+          color: white;
+          font-family: Arial, sans-serif;
+          margin-bottom: 10px;
+      }
+      .event-title {
+          font-size: 20px;
+          font-weight: bold;
+      }
+      .event-details {
+          font-size: 16px;
+          display: flex;
+          align-items: center;
+          gap: 8px;
+      }
+      </style>
+  """, unsafe_allow_html=True)
+  
+  # Generate a random number of events (between 3 and 10)
+  num_events = random.randint(3, 10)
+  
+  # Sample event data
+  cities = ["Berlin", "Paris", "London", "New York", "Tokyo"]
+  event_titles = ["Music Festival", "Tech Conference", "Startup Meetup", "Art Exhibition", "Sports Event"]
+  prices = [10, 20, 30, 40, 50]
+  
+  # Loop to generate event tiles dynamically
+  for i in range(num_events):
+      event_name = random.choice(event_titles)
+      event_date = f"{random.randint(1, 28)}. März 2025"
+      city = random.choice(cities)
+      price = random.choice(prices)
+  
+      event_html = f"""
+      <div class="event-tile">
+          <div class="event-title">{event_name}</div>
+          <div class="event-details">
+              📅 {event_date} - 📍 {city} - 💰 {price}€
+          </div>
+      </div>
+      """
+  
+      st.markdown(event_html, unsafe_allow_html=True)
+  
+  
