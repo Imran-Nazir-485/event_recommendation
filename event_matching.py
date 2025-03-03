@@ -212,7 +212,7 @@ if selection=="Recommended":
   
   
   # Loop to generate event tiles dynamically
-  for i in range(num_events):
+  for i in range(10):
       event_name = event_titles[i]
       event_date = date[i]
       city = cities[i]
