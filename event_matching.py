@@ -18,7 +18,8 @@ load_dotenv()
 # Load Sentence Transformer model
 # model = SentenceTransformer('all-MiniLM-L6-v2')
 # Page Layout
-st.set_page_config(page_title="Profilkarte", layout="centered")
+
+
 
 # df=pd.read_excel("events_summary.xlsx")
 # profile_summary=pd.read_excel("profile_summary_combine.xlsx")
@@ -271,8 +272,10 @@ if selection=="My Profile":
   profile_id=st.selectbox("Select",profile_df["profile_id"])
   my_profile=profile_df[profile_df["profile_id"]==profile_id]['profile_summary'].values[0]
   # st.write(my_profile)
-  user_data=json.loads(llm.invoke(get_prompt(my_profile)).content[3:-3])
+  user_data=llm.invoke(get_prompt(my_profile)).content
   st.write(user_data)
+  user_data=json.loads(user_data[3:-3])
+  
 
 
   
