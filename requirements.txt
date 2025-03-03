@@ -6,3 +6,4 @@ langchainhub
 langchain_groq
 torch
 gdown
+python-dotenv
