@@ -129,9 +129,9 @@ st.title("Event Recommendation")
 
 selection=st.sidebar.selectbox(
     "☰ Menu",
-    ["Event Recommendation", "Option 2", "Option 3"])
+    ["Home" ,"Recommended", "My Profile"])
 
-if selection=="Event Recommendation":
+if selection=="Recommended":
   profile_id=st.selectbox("Select",profile_df["profile_id"])
   embeddings=profile_df[profile_df["profile_id"]==profile_id]['embeddings'].values
   # st.write(embeddings[0])
