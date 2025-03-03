@@ -156,10 +156,10 @@ if selection=="Recommended":
 #   # Compute cosine similarity
 #   # similarity = cosine_similarity(embedding_1, embedding_2)
   
-#   df['similarity']=df['embedding'].apply(lambda x: cosine_similarity([x],embeddings[0].reshape(1,-1))[0][0])
+  df['similarity']=df['embedding'].apply(lambda x: cosine_similarity([x],embeddings[0].reshape(1,-1))[0][0])
   
 # #Filter rows with similarity >= 50% (0.5)
-#   similar_texts=df[df['similarity'] >= 0.50].sort_values(by='similarity', ascending=False)
+  similar_texts=df[df['similarity'] >= 0.50].sort_values(by='similarity', ascending=False)
 # #   st.write(similar_texts.shape)
 
 # #Display results
@@ -198,11 +198,13 @@ if selection=="Recommended":
   
   # Generate a random number of events (between 3 and 10)
   num_events = random.randint(3, 10)
+
+
   
   # Sample event data
-  cities = ["Berlin", "Paris", "London", "New York", "Tokyo"]
-  event_titles = ["Music Festival", "Tech Conference", "Startup Meetup", "Art Exhibition", "Sports Event"]
-  prices = [10, 20, 30, 40, 50]
+  cities = similar_text['location'][:10].values[0]
+  event_titles = similar_text['title'][:10].values[0]
+  prices = similar_text['price'][:10].values[0]
   
   # Loop to generate event tiles dynamically
   for i in range(num_events):
