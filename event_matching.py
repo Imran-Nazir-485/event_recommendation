@@ -156,15 +156,15 @@ if selection=="Recommended":
 #   # Compute cosine similarity
 #   # similarity = cosine_similarity(embedding_1, embedding_2)
   
-  df['similarity']=df['embedding'].apply(lambda x: cosine_similarity([x],embeddings[0].reshape(1,-1))[0][0])
+#   df['similarity']=df['embedding'].apply(lambda x: cosine_similarity([x],embeddings[0].reshape(1,-1))[0][0])
   
-#Filter rows with similarity >= 50% (0.5)
-  similar_texts=df[df['similarity'] >= 0.50].sort_values(by='similarity', ascending=False)
-#   st.write(similar_texts.shape)
+# #Filter rows with similarity >= 50% (0.5)
+#   similar_texts=df[df['similarity'] >= 0.50].sort_values(by='similarity', ascending=False)
+# #   st.write(similar_texts.shape)
 
-#Display results
-  st.dataframe(similar_texts[['similarity','title', 'location', 'address','price', 'category','link','description','refund_policy', 'organizer','tags']])
-  st.subheader("User Profile", profile_id)
+# #Display results
+#   st.dataframe(similar_texts[['similarity','title', 'location', 'address','price', 'category','link','description','refund_policy', 'organizer','tags']])
+#   st.subheader("User Profile", profile_id)
   # st.write(profile_df[profile_df["profile_id"]==profile_id]['profile_summary'].values[0])
 #   # st.write(df)
 
