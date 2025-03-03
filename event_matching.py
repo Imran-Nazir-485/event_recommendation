@@ -200,7 +200,7 @@ if selection=="Recommended":
   """, unsafe_allow_html=True)
   
   # Generate a random number of events (between 3 and 10)
-  num_events = random.randint(1, 10)
+  num_events = random.randint(0, 10)
 
 
   
