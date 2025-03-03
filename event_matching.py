@@ -12,7 +12,9 @@ import sqlite3
 import json
 import numpy as np
 import gdown
-
+from dotenv import load_dotenv
+# Load environment variables
+load_dotenv()
 # Load Sentence Transformer model
 # model = SentenceTransformer('all-MiniLM-L6-v2')
 
@@ -33,7 +35,7 @@ from langchain_groq import ChatGroq
 
 llm = ChatGroq(
     temperature=0,
-    model="mixtral-8x7b-32768",
+    model="llama-3.3-70b-versatile",
     api_key=GROQ_API_KEY
 )
 ############################################################################################################
