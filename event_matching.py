@@ -247,6 +247,8 @@ if selection=="My Profile":
   my_profile=profile_df[profile_df["profile_id"]==profile_id]['profile_summary'].values[0]
   st.write(my_profile)
 
+  st.write(llm.invoke(my_profile + "extract key info"))
+
 
   # Sample extracted user profile data (replace with real extracted data)
   user_data = {
