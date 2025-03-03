@@ -38,17 +38,15 @@ def get_prompt(profile_data):
   4. No Additional information like "here is the json data"
   
   Format the extracted details as JSON:
-  {
+  {{
     
     "location": "City, Country",
     "interests": ["Interest 1", "Interest 2", "Interest 3"],
     "additional_info": "Other relevant details"
-  }
+  }}
   
   # Here is the user data:
   {profile_data}
-  
-  
   """
 
 ###################################################################################################
