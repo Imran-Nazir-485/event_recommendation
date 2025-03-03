@@ -202,9 +202,9 @@ if selection=="Recommended":
 
   
   # Sample event data
-  cities = similar_text['location'][:10].values[0]
-  event_titles = similar_text['title'][:10].values[0]
-  prices = similar_text['price'][:10].values[0]
+  cities = similar_texts['location'][:10].values[0]
+  event_titles = similar_texts['title'][:10].values[0]
+  prices = similar_texts['price'][:10].values[0]
   
   # Loop to generate event tiles dynamically
   for i in range(num_events):
