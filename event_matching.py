@@ -212,7 +212,7 @@ if selection=="Recommended":
   
   
   # Loop to generate event tiles dynamically in rows of 2
-  for i in range(0, num_events, 2):
+  for i in range(0, 10, 2):
       col1, col2 = st.columns(2)  # Create two columns
   
       # Generate first event
