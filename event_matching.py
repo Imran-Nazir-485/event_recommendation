@@ -228,3 +228,23 @@ if selection=="Recommended":
       """
   
       st.markdown(event_html, unsafe_allow_html=True)
+
+
+
+  if selection=="My Profile":
+    profile_id=st.selectbox("Select",profile_df["profile_id"])
+    my_profile=profile_df[profile_df["profile_id"]==profile_id].values
+    st.write(my_profile)
+
+
+
+
+
+
+
+
+
+
+
+
+
