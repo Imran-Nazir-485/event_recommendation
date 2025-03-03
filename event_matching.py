@@ -277,7 +277,16 @@ if selection=="My Profile":
   user_data=json.loads(user_data[3:-3])
   
   
-  # Styling for the card
+  import streamlit as st
+
+# User data
+user_data = {
+    "name": "Max Mustermann",
+    "location": "Hamburg, Deutschland",
+    "interests": ["Veranstaltungen", "Sport", "Musik", "Spiritualität", "Fitness"]
+}
+
+  # Styling for the profile card
   st.markdown("""
       <style>
           .profile-card {
@@ -287,28 +296,40 @@ if selection=="My Profile":
               box-shadow: 2px 2px 10px rgba(255, 255, 255, 0.2);
               text-align: center;
               color: white;
+              max-width: 400px;
+              margin: auto;
+          }
+          .interest-container {
+              display: flex;
+              justify-content: center;
+              flex-wrap: wrap;
+              gap: 8px;
+              margin-top: 10px;
           }
           .interest {
               display: inline-block;
               background-color: #b71c1c;
-              padding: 8px 15px;
-              margin: 5px;
+              padding: 5px 10px;
               border-radius: 5px;
               color: white;
+              font-size: 14px;
               font-weight: bold;
+              white-space: nowrap;
           }
       </style>
   """, unsafe_allow_html=True)
   
-  # Profile card
+  # Profile card layout
   st.markdown('<div class="profile-card">', unsafe_allow_html=True)
   st.markdown("<h1>📖 Profilkarte</h1>", unsafe_allow_html=True)
   st.markdown(f"<h2>Temp</h2>", unsafe_allow_html=True)
   st.markdown(f"<p>📍 <strong>Standort:</strong> {user_data['location']}</p>", unsafe_allow_html=True)
   st.markdown("<h3>🎯 Interessen</h3>", unsafe_allow_html=True)
   
-  # Display interests as badges
+  # Display interests in a flex container
+  st.markdown('<div class="interest-container">', unsafe_allow_html=True)
   for interest in user_data["interests"]:
       st.markdown(f'<span class="interest">{interest}</span>', unsafe_allow_html=True)
+  st.markdown('</div>', unsafe_allow_html=True)
   
   st.markdown('</div>', unsafe_allow_html=True)
