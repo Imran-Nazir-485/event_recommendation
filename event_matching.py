@@ -276,56 +276,39 @@ if selection=="My Profile":
   st.write(user_data)
   user_data=json.loads(user_data[3:-3])
   
-
-
   
-    
-  # Page Layout
-  # st.set_page_config(page_title="Profilkarte", layout="centered")
-  
-  # Profile Card
-  st.markdown(
-      """
+  # Styling for the card
+  st.markdown("""
       <style>
-          .card {
-              background-color: #1e1e1e;
+          .profile-card {
+              background-color: #141414;
               padding: 20px;
               border-radius: 10px;
+              box-shadow: 2px 2px 10px rgba(255, 255, 255, 0.2);
               text-align: center;
               color: white;
-              max-width: 500px;
-              margin: auto;
-              box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.2);
-          }
-          .interests {
-              display: flex;
-              justify-content: center;
-              gap: 10px;
-              flex-wrap: wrap;
           }
           .interest {
-              background-color: #ff5733;
-              padding: 8px 12px;
+              display: inline-block;
+              background-color: #b71c1c;
+              padding: 8px 15px;
+              margin: 5px;
               border-radius: 5px;
               color: white;
-              font-size: 14px;
+              font-weight: bold;
           }
       </style>
-      """,
-      unsafe_allow_html=True
-  )
+  """, unsafe_allow_html=True)
   
-  # Display Profile Card
-  st.markdown('<div class="card">', unsafe_allow_html=True)
+  # Profile card
+  st.markdown('<div class="profile-card">', unsafe_allow_html=True)
+  st.markdown("<h1>📖 Profilkarte</h1>", unsafe_allow_html=True)
+  st.markdown(f"<h2>{user_data['name']}</h2>", unsafe_allow_html=True)
+  st.markdown(f"<p>📍 <strong>Standort:</strong> {user_data['location']}</p>", unsafe_allow_html=True)
+  st.markdown("<h3>🎯 Interessen</h3>", unsafe_allow_html=True)
   
-  st.markdown('<h2>📖 Profilkarte</h2>', unsafe_allow_html=True)
-  st.markdown(f"<h3>Max Mustermann</h3>", unsafe_allow_html=True)
-  st.markdown(f"📍 <b>Standort:</b> {user_data['location']}", unsafe_allow_html=True)
-  
-  st.markdown('<h3>🎯 Interessen</h3>', unsafe_allow_html=True)
-  st.markdown('<div class="interests">', unsafe_allow_html=True)
+  # Display interests as badges
   for interest in user_data["interests"]:
       st.markdown(f'<span class="interest">{interest}</span>', unsafe_allow_html=True)
-  st.markdown('</div>', unsafe_allow_html=True)
   
   st.markdown('</div>', unsafe_allow_html=True)
