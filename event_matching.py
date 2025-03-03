@@ -26,6 +26,17 @@ def get_embedding(text_emb):
   return t
 
 
+###################################################################################################
+GROQ_API_KEY=os.getenv("GROQ_API_KEY")
+
+from langchain_groq import ChatGroq
+
+llm = ChatGroq(
+    temperature=0,
+    model="mixtral-8x7b-32768",
+    api_key=GROQ_API_KEY
+)
+############################################################################################################
 # https://drive.google.com/file/d/1NV-lLB8MXRCHH73gHQC7Qyq60qhHxPmN/view?usp=sharing
 # Google Drive File ID
 file_id = "1NV-lLB8MXRCHH73gHQC7Qyq60qhHxPmN"
