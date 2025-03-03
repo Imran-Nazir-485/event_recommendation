@@ -273,8 +273,9 @@ if selection=="My Profile":
   my_profile=profile_df[profile_df["profile_id"]==profile_id]['profile_data'].values[0]
   # st.write(my_profile)
   # user_data=llm.invoke(get_prompt(my_profile)).content
-  st.write(my_profile)
+  
   user_data=json.loads(my_profile)
+  st.write(my_profile)
   
   
   
