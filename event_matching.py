@@ -160,6 +160,7 @@ if selection=="Recommended":
   
 # #Filter rows with similarity >= 50% (0.5)
   similar_texts=df[df['similarity'] >= 0.50].sort_values(by='similarity', ascending=False)
+  similar_texts=similar_texts.drop_duplicates(['title'])
 
   st.write(similar_texts[:10])
 # #   st.write(similar_texts.shape)
