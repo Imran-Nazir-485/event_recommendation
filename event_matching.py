@@ -129,7 +129,7 @@ df['embedding'] = df['embedding'].apply(convert_blob_to_embedding)
 ######################################################################################################################################################
 
 # Connect to SQLite database
-conn = sqlite3.connect('user_profile_data_db.db')
+conn = sqlite3.connect('user_data_extracted.db')
 cursor = conn.cursor()
 
 # Retrieve all records from the database
