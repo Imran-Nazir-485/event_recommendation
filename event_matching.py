@@ -303,7 +303,7 @@ if selection=="My Profile":
   # Profile card
   st.markdown('<div class="profile-card">', unsafe_allow_html=True)
   st.markdown("<h1>📖 Profilkarte</h1>", unsafe_allow_html=True)
-  st.markdown(f"<h2>"Temp"</h2>", unsafe_allow_html=True)
+  st.markdown(f"<h2>Temp</h2>", unsafe_allow_html=True)
   st.markdown(f"<p>📍 <strong>Standort:</strong> {user_data['location']}</p>", unsafe_allow_html=True)
   st.markdown("<h3>🎯 Interessen</h3>", unsafe_allow_html=True)
   
