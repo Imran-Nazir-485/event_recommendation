@@ -197,14 +197,14 @@ if selection=="Recommended":
   """, unsafe_allow_html=True)
   
   # Generate a random number of events (between 3 and 10)
-  num_events = random.randint(3, 10)
+  num_events = random.randint(1, 10)
 
 
   
   # Sample event data
-  cities = similar_texts['location'][:10].values[0]
+  cities = similar_texts['location'][:10].values
   event_titles = similar_texts['title'][:10].values[0]
-  prices = similar_texts['price'][:10].values[0]
+  prices = similar_texts['price'][:10].values
   
   # Loop to generate event tiles dynamically
   for i in range(num_events):
