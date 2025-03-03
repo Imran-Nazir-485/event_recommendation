@@ -278,6 +278,7 @@ if selection=="My Profile":
   
   st.write(json.loads(my_profile))
   # st.write(type(user_data))
+  user_data=json.loads(my_profile)
   
   
   
