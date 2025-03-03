@@ -28,6 +28,29 @@ def get_embedding(text_emb):
   return t
 
 
+def get_prompt(profile_data):
+  return f"""
+  Extract key details from the following user profile data:
+
+  1. **Location**: Extract the city and country (if available).
+  2. **Interests**: Extract a list of hobbies or interests.
+  3. **Additional Information**: Extract any relevant details such as job title, bio, or age (if available).
+  4. No Additional information like "here is the json data"
+  
+  Format the extracted details as JSON:
+  {
+    
+    "location": "City, Country",
+    "interests": ["Interest 1", "Interest 2", "Interest 3"],
+    "additional_info": "Other relevant details"
+  }
+  
+  Here is the user data:
+  {profile_data}
+  
+  
+  """
+
 ###################################################################################################
 GROQ_API_KEY=os.getenv("GROQ_API_KEY")
 
@@ -249,7 +272,7 @@ if selection=="My Profile":
   my_profile=profile_df[profile_df["profile_id"]==profile_id]['profile_summary'].values[0]
   # st.write(my_profile)
 
-  st.write(llm.invoke(my_profile + "extract key info"))
+  st.write(llm.invoke(get_prompt(my_profile)).content)
 
 
   # Sample extracted user profile data (replace with real extracted data)
