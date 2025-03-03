@@ -205,7 +205,7 @@ if selection=="Recommended":
 
   
   # Sample event data
-  cities = similar_texts['location'][:10].values[0]
+  cities = similar_texts['location'][:10].values
   event_titles = similar_texts['title'][:10].values
   prices = similar_texts['price'][:10].values
   date = similar_texts['date'][:10].values
