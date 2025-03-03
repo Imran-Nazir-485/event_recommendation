@@ -269,69 +269,58 @@ if selection=="My Profile":
   profile_id=st.selectbox("Select",profile_df["profile_id"])
   my_profile=profile_df[profile_df["profile_id"]==profile_id]['profile_summary'].values[0]
   # st.write(my_profile)
+ user_data=ast.literal_eval(llm.invoke(get_prompt(my_profile)).content)
+  st.write()
 
-  st.write(llm.invoke(get_prompt(my_profile)).content)
 
-
-  # Sample extracted user profile data (replace with real extracted data)
-  user_data = {
-      "name": "Max Mustermann",
-      "profile_picture": "https://via.placeholder.com/100",  # Replace with actual URL
-      "location": "Düsseldorf",
-      "interests": ["Musik", "Theater", "Kunst", "Fitness"]
-  }
   
-  # Custom CSS for styling
-  st.markdown("""
-      <style>
-      .profile-card {
-          background-color: #1E1E1E;
-          padding: 20px;
-          border-radius: 12px;
-          color: white;
-          text-align: center;
-          width: 100%;
-      }
-      .profile-picture {
-          border-radius: 50%;
-          width: 80px;
-          height: 80px;
-          margin-bottom: 10px;
-      }
-      .interest-badge {
-          display: inline-block;
-          background: #FF5722;
-          padding: 5px 10px;
-          margin: 5px;
-          border-radius: 8px;
-          font-size: 14px;
-      }
-      </style>
-  """, unsafe_allow_html=True)
+    
+  # Page Layout
+  st.set_page_config(page_title="Profilkarte", layout="centered")
   
   # Profile Card
-  st.markdown(f"""
-      <div class="profile-card">
-          <img src="{user_data['profile_picture']}" class="profile-picture">
-          <h2>{user_data['name']}</h2>
-          <p>📍 Standort: {user_data['location']}</p>
-          <h3>🎯 Interessen</h3>
-          <div>
-              {''.join([f'<span class="interest-badge">🎵 {interest}</span>' for interest in user_data['interests']])}
-          </div>
-      </div>
-  """, unsafe_allow_html=True)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  st.markdown(
+      """
+      <style>
+          .card {
+              background-color: #1e1e1e;
+              padding: 20px;
+              border-radius: 10px;
+              text-align: center;
+              color: white;
+              max-width: 500px;
+              margin: auto;
+              box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.2);
+          }
+          .interests {
+              display: flex;
+              justify-content: center;
+              gap: 10px;
+              flex-wrap: wrap;
+          }
+          .interest {
+              background-color: #ff5733;
+              padding: 8px 12px;
+              border-radius: 5px;
+              color: white;
+              font-size: 14px;
+          }
+      </style>
+      """,
+      unsafe_allow_html=True
+  )
+  
+  # Display Profile Card
+  st.markdown('<div class="card">', unsafe_allow_html=True)
+  
+  st.markdown('<h2>📖 Profilkarte</h2>', unsafe_allow_html=True)
+  st.markdown(f"<h3>Max Mustermann</h3>", unsafe_allow_html=True)
+  st.markdown(f"📍 <b>Standort:</b> {user_data['location']}", unsafe_allow_html=True)
+  
+  st.markdown('<h3>🎯 Interessen</h3>', unsafe_allow_html=True)
+  st.markdown('<div class="interests">', unsafe_allow_html=True)
+  for interest in user_data["interests"]:
+      st.markdown(f'<span class="interest">{interest}</span>', unsafe_allow_html=True)
+  st.markdown('</div>', unsafe_allow_html=True)
+  
+  st.markdown('</div>', unsafe_allow_html=True)
