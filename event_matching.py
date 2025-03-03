@@ -208,23 +208,44 @@ if selection=="Recommended":
   cities = similar_texts['location'][:10].values
   event_titles = similar_texts['title'][:10].values[0]
   prices = similar_texts['price'][:10].values
+  date = similar_texts['date'][:10].values
   
-  # Loop to generate event tiles dynamically
-  for i in range(num_events):
-      event_name = random.choice(event_titles)
-      event_date = f"{random.randint(1, 28)}. März 2025"
-      city = random.choice(cities)
-      price = random.choice(prices)
   
-      event_html = f"""
+  # Loop to generate event tiles dynamically in rows of 2
+  for i in range(0, num_events, 2):
+      col1, col2 = st.columns(2)  # Create two columns
+  
+      # Generate first event
+      event_name1 = event_titles[i]
+      event_date1 = date[i]
+      city1 = city[i]
+      price1 = prices[i]
+  
+      event_html1 = f"""
       <div class="event-tile">
-          <div class="event-title">{event_name}</div>
+          <div class="event-title">{event_name1}</div>
           <div class="event-details">
-              📅 {event_date} - 📍 {city} - 💰 {price}€
+              📅 {event_date1} - 📍 {city1} - 💰 {price1}€
           </div>
       </div>
       """
   
-      st.markdown(event_html, unsafe_allow_html=True)
+      col1.markdown(event_html1, unsafe_allow_html=True)
   
+      # Generate second event (if available)
+      if i + 1 < num_events:
+          event_name2 = event_titles[i+1]
+          event_date2 = date[i+1]
+          city2 = city[i+1]
+          price2 = prices[i+1]
   
+          event_html2 = f"""
+          <div class="event-tile">
+              <div class="event-title">{event_name2}</div>
+              <div class="event-details">
+                  📅 {event_date2} - 📍 {city2} - 💰 {price2}€
+              </div>
+          </div>
+          """
+  
+          col2.markdown(event_html2, unsafe_allow_html=True)
