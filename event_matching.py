@@ -274,7 +274,7 @@ if selection=="My Profile":
   # st.write(my_profile)
   # user_data=llm.invoke(get_prompt(my_profile)).content
   
-  st.write(json.loads(str(my_profile)))
+  st.write(json.loads(f"""{my_profile}"""))
   # st.write(type(user_data))
   
   
