@@ -320,7 +320,7 @@ if selection=="My Profile":
   
   # Display interests in a flex container
   st.markdown('<div class="interest-container">', unsafe_allow_html=True)
-  for interest in user_data["interests"]:
+  for interest in user_data["interests"][:3]:
       st.markdown(f'<span class="interest">{interest}</span>', unsafe_allow_html=True)
   st.markdown('</div>', unsafe_allow_html=True)
   
