@@ -237,6 +237,57 @@ if selection=="My Profile":
   st.write(my_profile)
 
 
+  # Sample extracted user profile data (replace with real extracted data)
+  user_data = {
+      "name": "Max Mustermann",
+      "profile_picture": "https://via.placeholder.com/100",  # Replace with actual URL
+      "location": "Düsseldorf",
+      "interests": ["Musik", "Theater", "Kunst", "Fitness"]
+  }
+  
+  # Custom CSS for styling
+  st.markdown("""
+      <style>
+      .profile-card {
+          background-color: #1E1E1E;
+          padding: 20px;
+          border-radius: 12px;
+          color: white;
+          text-align: center;
+          width: 100%;
+      }
+      .profile-picture {
+          border-radius: 50%;
+          width: 80px;
+          height: 80px;
+          margin-bottom: 10px;
+      }
+      .interest-badge {
+          display: inline-block;
+          background: #FF5722;
+          padding: 5px 10px;
+          margin: 5px;
+          border-radius: 8px;
+          font-size: 14px;
+      }
+      </style>
+  """, unsafe_allow_html=True)
+  
+  # Profile Card
+  st.markdown(f"""
+      <div class="profile-card">
+          <img src="{user_data['profile_picture']}" class="profile-picture">
+          <h2>{user_data['name']}</h2>
+          <p>📍 Standort: {user_data['location']}</p>
+          <h3>🎯 Interessen</h3>
+          <div>
+              {''.join([f'<span class="interest-badge">🎵 {interest}</span>' for interest in user_data['interests']])}
+          </div>
+      </div>
+  """, unsafe_allow_html=True)
+
+
+
 
 
 
