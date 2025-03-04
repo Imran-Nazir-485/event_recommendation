@@ -23,6 +23,22 @@ load_dotenv()
 # Set the page configuration to wide mode
 st.set_page_config(page_title="My App", layout="wide")
 
+# Inject CSS to expand content area
+st.markdown(
+    """
+    <style>
+        /* Increase the width of the main content */
+        .main .block-container {
+            max-width: 98%;
+            padding-left: 2%;
+            padding-right: 2%;
+        }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
+
 # df=pd.read_excel("events_summary.xlsx")
 # profile_summary=pd.read_excel("profile_summary_combine.xlsx")
 ##################################################################################################
