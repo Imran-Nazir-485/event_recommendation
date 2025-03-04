@@ -203,26 +203,43 @@ profile_df = pd.DataFrame(rows, columns=columns)
 profile_df['embeddings'] = profile_df['embeddings'].apply(convert_blob_to_embedding)
 
 
-# st.write(df.shape)
 
-st.title("Event Recommendation")
+
+
+# Title Section
+title_html = """
+    <div style="text-align: left; padding: 20px; max-width: 800px; margin: auto;">
+        <h1 style="color: #FF914D;">🎉 Event Recommendation App for Germany 🇩🇪</h1>
+    </div>
+"""
+
+# About Section
+
+# Display in Streamlit
+st.markdown(title_html, unsafe_allow_html=True)
 
 selection=st.sidebar.selectbox(
     "☰ Menu",
     ["Home" ,"Recommended", "My Profile"])
 
 if selection=="Home":
-    # HTML for About Section
     about_html = """
-        <div style="text-align: center; padding: 20px;">
-            <h1 style="color: #FF914D;">🎉 Event Recommendation App for Germany 🇩🇪</h1>
-            <p style="font-size: 18px; max-width: 800px; margin: auto; color: #ddd;">
-                Discover personalized events tailored to your interests and location. Whether it's concerts, 
-                festivals, sports events, or networking meetups, our AI-driven recommendations ensure you never 
-                miss an exciting event happening in Germany.
-            </p>
-            <h2 style="color: #33A1FF; margin-top: 30px;">✨ Key Features</h2>
-            <ul style="list-style-type: none; padding: 0; font-size: 16px; color: #ddd;">
+    <div style="text-align: left; padding: 20px; max-width: 800px; margin: auto;">
+        <h2 style="color: #33A1FF;">📌 About</h2>
+        <p style="font-size: 18px; color: #ddd;">
+            The Event Recommendation App is designed to help users discover the best events in Germany 
+            based on their interests and location. Whether you're looking for concerts, sports matches, 
+            networking meetups, or cultural events, our AI-driven system provides personalized suggestions 
+            so you never miss out on exciting activities.
+        </p>
+    </div>
+    """
+
+    # Key Features Section
+    features_html = """
+        <div style="text-align: left; padding: 20px; max-width: 800px; margin: auto;">
+            <h2 style="color: #33A1FF;">✨ Key Features</h2>
+            <ul style="font-size: 16px; color: #ddd;">
                 <li>✅ <b>Personalized Event Suggestions:</b> AI-powered recommendations based on your interests.</li>
                 <li>📍 <b>Location-Based Filtering:</b> Find events happening near you.</li>
                 <li>🎭 <b>Diverse Event Categories:</b> From music and sports to networking and tech meetups.</li>
@@ -231,9 +248,14 @@ if selection=="Home":
             </ul>
         </div>
     """
-    
-    # Display the HTML in Streamlit
+
+
     st.markdown(about_html, unsafe_allow_html=True)
+    st.markdown(features_html, unsafe_allow_html=True)
+
+
+
+    
 if selection=="Recommended":
   profile_id=st.selectbox("Select",profile_df["profile_id"])
   embeddings=profile_df[profile_df["profile_id"]==profile_id]['embeddings'].values
