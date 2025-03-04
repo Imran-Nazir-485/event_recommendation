@@ -373,22 +373,15 @@ if selection=="My Profile":
   
   st.markdown('</div>', unsafe_allow_html=True)
 
-
   # Profile Section
-  st.markdown("<h4 style='text-align: center;'>📸 <i>Profilbild</i></h4>", unsafe_allow_html=True)
   st.markdown("<h1 style='text-align: center;'>Max Mustermann</h1>", unsafe_allow_html=True)
-  st.markdown("<p style='text-align: center;'>📍 <b>Standort:</b> Düsseldorf</p>", unsafe_allow_html=True)
- 
-  #  Interests Section
+  st.markdown(f"<p style='text-align: center;'>📍 <b>Standort:</b> {data['location']}</p>", unsafe_allow_html=True)
+    
+    # Interests Section
   st.markdown("<h3 style='text-align: center;'>🎯 <b>Interessen</b></h3>", unsafe_allow_html=True)
-
-  # List of interests with emojis
-  interests = [
-    ("🎵", "Musik", "#FF5733"),
-    ("🎭", "Theater", "#FF914D"),
-    ("🎨", "Kunst", "#FF5E78"),
-    ("🏋️‍♂️", "Fitness", "#FF7433")
-  ]
+    
+    # Define interest colors (repeats if more interests exist)
+  colors = ["#FF5733", "#FF914D", "#FF5E78", "#FF7433", "#33A1FF", "#33FF77", "#FFC300", "#A133FF", "#FF3387", "#33FFA5"]
 
 # Custom CSS for styling badges
   st.markdown(
@@ -396,6 +389,7 @@ if selection=="My Profile":
     <style>
     .badge-container {
         display: flex;
+        flex-wrap: wrap;
         justify-content: center;
         gap: 10px;
         margin-top: 10px;
@@ -417,10 +411,12 @@ if selection=="My Profile":
     unsafe_allow_html=True
   )
 
-# Create badge layout
+# Generate dynamic badges based on interests
   badges_html = '<div class="badge-container">'
-  for emoji, text, color in interests:
-      badges_html += f'<span class="badge" style="--bg-color: {color};">{emoji} {text}</span>'
+  for i, interest in enumerate(data["interests"]):
+     color = colors[i % len(colors)]  # Cycle through colors if interests exceed color list
+     badges_html += f'<span class="badge" style="--bg-color: {color};">{interest}</span>'
   badges_html += '</div>'
-
+    
   st.markdown(badges_html, unsafe_allow_html=True)
+
