@@ -20,7 +20,8 @@ load_dotenv()
 # model = SentenceTransformer('all-MiniLM-L6-v2')
 # Page Layout
 
-
+# Set the page configuration to wide mode
+st.set_page_config(page_title="My App", layout="wide")
 
 # df=pd.read_excel("events_summary.xlsx")
 # profile_summary=pd.read_excel("profile_summary_combine.xlsx")
