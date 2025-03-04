@@ -414,5 +414,5 @@ if selection=="My Profile":
   badges_html += '</div>'
     
   st.markdown(badges_html, unsafe_allow_html=True)
-  st.write(my_profile)
+  st.write(profile_df[profile_df["profile_id"]==profile_id]['profile_summary'].values[0])
 
