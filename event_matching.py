@@ -375,7 +375,7 @@ if selection=="My Profile":
 
   # Profile Section
   st.markdown("<h1 style='text-align: center;'>Max Mustermann</h1>", unsafe_allow_html=True)
-  st.markdown(f"<p style='text-align: center;'>📍 <b>Standort:</b> {data['location']}</p>", unsafe_allow_html=True)
+  st.markdown(f"<p style='text-align: center;'>📍 <b>Standort:</b> {user_data['location']}</p>", unsafe_allow_html=True)
     
     # Interests Section
   st.markdown("<h3 style='text-align: center;'>🎯 <b>Interessen</b></h3>", unsafe_allow_html=True)
@@ -413,7 +413,7 @@ if selection=="My Profile":
 
 # Generate dynamic badges based on interests
   badges_html = '<div class="badge-container">'
-  for i, interest in enumerate(data["interests"]):
+  for i, interest in enumerate(user_data["interests"]):
      color = colors[i % len(colors)]  # Cycle through colors if interests exceed color list
      badges_html += f'<span class="badge" style="--bg-color: {color};">{interest}</span>'
   badges_html += '</div>'
