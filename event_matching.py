@@ -209,7 +209,7 @@ profile_df['embeddings'] = profile_df['embeddings'].apply(convert_blob_to_embedd
 # Title Section
 title_html = """
     <div style="text-align: left; padding: 20px; max-width: 800px; margin: auto;">
-        <h1 style="color: #FF914D;">🎉 Event Recommendation App for Germany 🇩🇪</h1>
+        <h1 style="color: #FF914D;">🎉 Event Recommendation App</h1>
     </div>
 """
 
@@ -228,7 +228,7 @@ if selection=="Home":
         <h2 style="color: #33A1FF;">📌 About</h2>
         <p style="font-size: 18px; color: #ddd;">
             The Event Recommendation App is designed to help users discover the best events in Germany 
-            based on their interests and location. Whether you're looking for concerts, sports matches, 
+            based on their interests & location seen in social media profile. Whether you're looking for concerts, sports matches, 
             networking meetups, or cultural events, our AI-driven system provides personalized suggestions 
             so you never miss out on exciting activities.
         </p>
