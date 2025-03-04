@@ -212,7 +212,7 @@ selection=st.sidebar.selectbox(
     ["Home" ,"Recommended", "My Profile"])
 
 if selection=="Home":
-    st.write("""### **About the Event Recommendation App**  
+    st.markdown("""### **About the Event Recommendation App**  
     
     The **Event Recommendation App for Germany** is designed to help users discover personalized events based on their interests and location. By leveraging AI-driven recommendations, the app ensures that users stay updated on concerts, festivals, sports events, networking meetups, and more happening across Germany.
     
