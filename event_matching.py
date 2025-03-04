@@ -38,6 +38,19 @@ st.set_page_config(page_title="My App", layout="wide")
 #     unsafe_allow_html=True
 # )
 
+# Inject custom CSS to adjust sidebar width
+st.markdown(
+    """
+    <style>
+        /* Reduce sidebar width */
+        [data-testid="stSidebar"] {
+            width: 200px !important;
+            min-width: 200px !important;
+        }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
 
 # df=pd.read_excel("events_summary.xlsx")
 # profile_summary=pd.read_excel("profile_summary_combine.xlsx")
