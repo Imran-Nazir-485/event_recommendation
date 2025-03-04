@@ -372,3 +372,12 @@ if selection=="My Profile":
   st.markdown('</div>', unsafe_allow_html=True)
   
   st.markdown('</div>', unsafe_allow_html=True)
+
+
+# Create columns for horizontal alignment
+  cols = st.columns(len(user_data["interests"]))  # Create equal columns based on number of interests
+    
+    # Display each interest inside its respective column
+  for col, interest in zip(cols, user_data["interests"]):
+      with col:
+          st.button(interest)  # Display as a button (alternative: st.markdown for styled text)
