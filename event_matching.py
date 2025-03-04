@@ -211,6 +211,27 @@ selection=st.sidebar.selectbox(
     "☰ Menu",
     ["Home" ,"Recommended", "My Profile"])
 
+if selection=="Home":
+    st.write("""### **About the Event Recommendation App**  
+    
+    The **Event Recommendation App for Germany** is designed to help users discover personalized events based on their interests and location. By leveraging AI-driven recommendations, the app ensures that users stay updated on concerts, festivals, sports events, networking meetups, and more happening across Germany.
+    
+    ### **Key Features:**  
+    - **Personalized Event Suggestions** 🎯  
+      Users receive recommendations tailored to their preferences, ensuring they never miss an event that matches their interests.  
+    
+    - **Location-Based Filtering** 📍  
+      The app suggests events happening nearby, whether in major cities like Berlin, Hamburg, or Munich or smaller towns.  
+    
+    - **Diverse Event Categories** 🎭  
+      Supports various event types, including music, sports, networking, art, tech meetups, food festivals, and more.  
+    
+    - **Interactive Event Listings** 📆  
+      Users can view event details, including date, time, venue, and ticket availability, all in a user-friendly interface.  
+    
+    - **Real-Time Updates** ⏳  
+      The app keeps users informed about newly added events and trending activities.  """)
+
 if selection=="Recommended":
   profile_id=st.selectbox("Select",profile_df["profile_id"])
   embeddings=profile_df[profile_df["profile_id"]==profile_id]['embeddings'].values
