@@ -324,7 +324,7 @@ if selection=="My Profile":
   user_data=json.loads(my_profile)
   
   # Profile Section
-  st.markdown(f"<h1 style='text-align: center;'>Porifle Id - {profile_id}</h1>", unsafe_allow_html=True)
+  st.markdown(f"<h1 style='text-align: center;'>Profile ID - {profile_id}</h1>", unsafe_allow_html=True)
   st.markdown(f"<p style='text-align: center;'>📍 <b>Standort:</b> {user_data['location']}</p>", unsafe_allow_html=True)
     
     # Interests Section
