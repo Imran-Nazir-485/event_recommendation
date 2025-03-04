@@ -5,6 +5,7 @@ import os
 import torch
 import ast
 import numpy as np
+import re
 from sklearn.metrics.pairwise import cosine_similarity
 from langchain.embeddings import HuggingFaceEmbeddings
 from sentence_transformers import SentenceTransformer
@@ -123,6 +124,8 @@ df['tags'] = df['tags'].apply(convert_json_to_list)
 
 # Convert 'embedding' column from BLOB back to NumPy array
 df['embedding'] = df['embedding'].apply(convert_blob_to_embedding)
+df['price']=df['price'].apply(lambda x: x if re.search(r'\d+', x) else np.nan)
+df.dropna(subset=['price'], inplace=True)
 
 # st.write(df)
 
