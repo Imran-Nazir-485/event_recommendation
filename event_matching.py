@@ -127,6 +127,14 @@ df['embedding'] = df['embedding'].apply(convert_blob_to_embedding)
 df['price']=df['price'].apply(lambda x: x if re.search(r'\d+', x) else np.nan)
 df.dropna(subset=['price'], inplace=True)
 
+to_drop=[]
+for i in range(len(df)):
+  for j in ['Kein Titel verfügbar','Datum nicht verfügbar','Ort nicht verfügbar','Adresse nicht verfügbar']:
+    if j in df.loc[i,'title'] or j in df.loc[i,'date']  or j in df.loc[i,'location'] or j in df.loc[i,'address']:
+      to_drop.append(i)
+df.drop(to_drop,inplace=True)
+df=df.reset_index(drop=True)
+
 # st.write(df)
 
 ######################################################################################################################################################
