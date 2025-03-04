@@ -242,7 +242,7 @@ if selection=="Recommended":
   similar_texts=df[df['similarity'] >= 0.50].sort_values(by='similarity', ascending=False)
   similar_texts=similar_texts.drop_duplicates(['title'])
 
-  st.write(similar_texts[:10])
+  # st.write(similar_texts[:10])
 # #   st.write(similar_texts.shape)
 
 # #Display results
@@ -319,7 +319,7 @@ if selection=="My Profile":
   # json_string = my_profile.replace("'", '"""')
   # st.write(json_string)
   
-  st.write(json.loads(my_profile))
+  # st.write(json.loads(my_profile))
   # st.write(type(user_data))
   user_data=json.loads(my_profile)
   
