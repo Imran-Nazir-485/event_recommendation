@@ -414,4 +414,5 @@ if selection=="My Profile":
   badges_html += '</div>'
     
   st.markdown(badges_html, unsafe_allow_html=True)
+  st.write(my_profile)
 
