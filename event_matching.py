@@ -126,6 +126,8 @@ df['tags'] = df['tags'].apply(convert_json_to_list)
 df['embedding'] = df['embedding'].apply(convert_blob_to_embedding)
 df['price']=df['price'].apply(lambda x: x if re.search(r'\d+', x) else np.nan)
 df.dropna(subset=['price'], inplace=True)
+df=df.reset_index(drop=True)
+
 
 to_drop=[]
 for i in range(len(df)):
