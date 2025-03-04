@@ -212,26 +212,28 @@ selection=st.sidebar.selectbox(
     ["Home" ,"Recommended", "My Profile"])
 
 if selection=="Home":
-    st.markdown("""### **About the Event Recommendation App**  
+    # HTML for About Section
+    about_html = """
+        <div style="text-align: center; padding: 20px;">
+            <h1 style="color: #FF914D;">🎉 Event Recommendation App for Germany 🇩🇪</h1>
+            <p style="font-size: 18px; max-width: 800px; margin: auto; color: #ddd;">
+                Discover personalized events tailored to your interests and location. Whether it's concerts, 
+                festivals, sports events, or networking meetups, our AI-driven recommendations ensure you never 
+                miss an exciting event happening in Germany.
+            </p>
+            <h2 style="color: #33A1FF; margin-top: 30px;">✨ Key Features</h2>
+            <ul style="list-style-type: none; padding: 0; font-size: 16px; color: #ddd;">
+                <li>✅ <b>Personalized Event Suggestions:</b> AI-powered recommendations based on your interests.</li>
+                <li>📍 <b>Location-Based Filtering:</b> Find events happening near you.</li>
+                <li>🎭 <b>Diverse Event Categories:</b> From music and sports to networking and tech meetups.</li>
+                <li>📆 <b>Interactive Event Listings:</b> View event details, dates, venues, and ticket availability.</li>
+                <li>⏳ <b>Real-Time Updates:</b> Stay informed about trending and newly added events.</li>
+            </ul>
+        </div>
+    """
     
-    The **Event Recommendation App for Germany** is designed to help users discover personalized events based on their interests and location. By leveraging AI-driven recommendations, the app ensures that users stay updated on concerts, festivals, sports events, networking meetups, and more happening across Germany.
-    
-    ### **Key Features:**  
-    - **Personalized Event Suggestions** 🎯  
-      Users receive recommendations tailored to their preferences, ensuring they never miss an event that matches their interests.  
-    
-    - **Location-Based Filtering** 📍  
-      The app suggests events happening nearby, whether in major cities like Berlin, Hamburg, or Munich or smaller towns.  
-    
-    - **Diverse Event Categories** 🎭  
-      Supports various event types, including music, sports, networking, art, tech meetups, food festivals, and more.  
-    
-    - **Interactive Event Listings** 📆  
-      Users can view event details, including date, time, venue, and ticket availability, all in a user-friendly interface.  
-    
-    - **Real-Time Updates** ⏳  
-      The app keeps users informed about newly added events and trending activities.  """)
-
+    # Display the HTML in Streamlit
+    st.markdown(about_html, unsafe_allow_html=True)
 if selection=="Recommended":
   profile_id=st.selectbox("Select",profile_df["profile_id"])
   embeddings=profile_df[profile_df["profile_id"]==profile_id]['embeddings'].values
