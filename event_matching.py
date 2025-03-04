@@ -24,19 +24,19 @@ load_dotenv()
 st.set_page_config(page_title="My App", layout="wide")
 
 # Inject CSS to expand content area
-st.markdown(
-    """
-    <style>
-        /* Increase the width of the main content */
-        .main .block-container {
-            max-width: 98%;
-            padding-left: 2%;
-            padding-right: 2%;
-        }
-    </style>
-    """,
-    unsafe_allow_html=True
-)
+# st.markdown(
+#     """
+#     <style>
+#         /* Increase the width of the main content */
+#         .main .block-container {
+#             max-width: 98%;
+#             padding-left: 2%;
+#             padding-right: 2%;
+#         }
+#     </style>
+#     """,
+#     unsafe_allow_html=True
+# )
 
 
 # df=pd.read_excel("events_summary.xlsx")
