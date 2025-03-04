@@ -374,10 +374,53 @@ if selection=="My Profile":
   st.markdown('</div>', unsafe_allow_html=True)
 
 
-# Create columns for horizontal alignment
-  cols = st.columns(len(user_data["interests"]))  # Create equal columns based on number of interests
-    
-    # Display each interest inside its respective column
-  for col, interest in zip(cols, user_data["interests"]):
-      with col:
-          st.button(interest)  # Display as a button (alternative: st.markdown for styled text)
+  # Profile Section
+  st.markdown("<h4 style='text-align: center;'>📸 <i>Profilbild</i></h4>", unsafe_allow_html=True)
+  st.markdown("<h1 style='text-align: center;'>Max Mustermann</h1>", unsafe_allow_html=True)
+  st.markdown("<p style='text-align: center;'>📍 <b>Standort:</b> Düsseldorf</p>", unsafe_allow_html=True)
+ 
+  #  Interests Section
+  st.markdown("<h3 style='text-align: center;'>🎯 <b>Interessen</b></h3>", unsafe_allow_html=True)
+
+  # List of interests with emojis
+  interests = [
+    ("🎵", "Musik", "#FF5733"),
+    ("🎭", "Theater", "#FF914D"),
+    ("🎨", "Kunst", "#FF5E78"),
+    ("🏋️‍♂️", "Fitness", "#FF7433")
+  ]
+
+# Custom CSS for styling badges
+  st.markdown(
+    """
+    <style>
+    .badge-container {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        margin-top: 10px;
+    }
+    .badge {
+        background-color: var(--bg-color);
+        color: white;
+        padding: 8px 15px;
+        border-radius: 20px;
+        font-weight: bold;
+        font-size: 16px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        box-shadow: 2px 2px 8px rgba(255, 255, 255, 0.2);
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+  )
+
+# Create badge layout
+  badges_html = '<div class="badge-container">'
+  for emoji, text, color in interests:
+      badges_html += f'<span class="badge" style="--bg-color: {color};">{emoji} {text}</span>'
+  badges_html += '</div>'
+
+  st.markdown(badges_html, unsafe_allow_html=True)
