@@ -225,17 +225,22 @@ selection=st.sidebar.selectbox(
 
 if selection=="Home":
 
+    
+    # Create a slider with a range of 1 to 100
+    value = st.slider("Select a number", min_value=10, max_value=df.shape[0], value=50)
+
+
     # Generate 100 random numbers
-    random_numbers = [random.randint(1, 50) for _ in range(df.shape[0])]
+    random_numbers = [random.randint(1, value) for _ in range(df.shape[0])]
 
 
     # Sample event data
     cities = df.loc[random_numbers,'location'].values
-    event_titles = df['title'][:20].values
-    prices = df['price'][:20].values
-    dates = df['date'][:20].values
-    addresses = df['address'][:20].values  # Extracting address
-    tags_list = df['tags'][:20].values  # Extracting tags
+    event_titles = df.loc[random_numbers,'title'].values
+    prices = df.loc[random_numbers,'price'].values
+    dates = df.loc[random_numbers,'date'].values
+    addresses = df.loc[random_numbers,'address'].values  # Extracting address
+    tags_list = df.loc[random_numbers,'tags'].values  # Extracting tags
     
     # Custom CSS for styling event tiles
     st.markdown(
