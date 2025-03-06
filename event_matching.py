@@ -375,44 +375,46 @@ if selection=="My Profile":
     # Interests Section
   st.markdown("<h3 style='text-align: center;'>🎯 <b>Interessen</b></h3>", unsafe_allow_html=True)
     
-    # Define interest colors (repeats if more interests exist)
+  # Define interest colors (repeats if more interests exist)
   colors = ["#FF5733", "#FF914D", "#FF5E78", "#FF7433", "#33A1FF", "#33FF77", "#FFC300", "#A133FF", "#FF3387", "#33FFA5"]
-
-# Custom CSS for styling badges
+    
+    # Custom CSS for styling badges on a white background
   st.markdown(
-    """
-    <style>
-    .badge-container {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 10px;
-        margin-top: 10px;
-    }
-    .badge {
-        background-color: var(--bg-color);
-        color: white;
-        padding: 8px 15px;
-        border-radius: 20px;
-        font-weight: bold;
-        font-size: 16px;
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        box-shadow: 2px 2px 8px rgba(255, 255, 255, 0.2);
-    }
-    </style>
-    """,
-    unsafe_allow_html=True
-  )
-
-# Generate dynamic badges based on interests
+        """
+        <style>
+        .badge-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        .badge {
+            background-color: var(--bg-color);
+            color: #333; /* Dark text for contrast */
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+            border: 1px solid rgba(0, 0, 0, 0.2); /* Light border for visibility */
+        }
+        </style>
+        """,
+        unsafe_allow_html=True
+    )
+    
+    # Generate dynamic badges based on interests
   badges_html = '<div class="badge-container">'
   for i, interest in enumerate(user_data["interests"]):
-     color = colors[i % len(colors)]  # Cycle through colors if interests exceed color list
-     badges_html += f'<span class="badge" style="--bg-color: ;">{interest}</span>'
+        color = colors[i % len(colors)]  # Cycle through colors if interests exceed color list
+        badges_html += f'<span class="badge" style="--bg-color: {color};">{interest}</span>'
   badges_html += '</div>'
     
   st.markdown(badges_html, unsafe_allow_html=True)
+
   st.write(profile_df[profile_df["profile_id"]==profile_id]['profile_summary'].values[0])
 
