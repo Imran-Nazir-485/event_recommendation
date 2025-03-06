@@ -225,12 +225,12 @@ selection=st.sidebar.selectbox(
 if selection=="Home":
 
     # Sample event data
-    cities = similar_texts['location'][:10].values
-    event_titles = similar_texts['title'][:10].values
-    prices = similar_texts['price'][:10].values
-    dates = similar_texts['date'][:10].values
-    addresses = similar_texts['address'][:10].values  # Extracting address
-    tags_list = similar_texts['tags'][:10].values  # Extracting tags
+    cities = df['location'][:10].values
+    event_titles = df['title'][:10].values
+    prices = df['price'][:10].values
+    dates = df['date'][:10].values
+    addresses = df['address'][:10].values  # Extracting address
+    tags_list = df['tags'][:10].values  # Extracting tags
     
     # Custom CSS for styling event tiles
     st.markdown(
