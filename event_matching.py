@@ -167,7 +167,7 @@ for i in range(len(df)):
 df.drop(to_drop,inplace=True)
 df=df.reset_index(drop=True)
 
-# st.write(df)
+st.write(df)
 
 ######################################################################################################################################################
 
@@ -223,35 +223,116 @@ selection=st.sidebar.selectbox(
     ["Home" ,"Recommended", "My Profile"])
 
 if selection=="Home":
-    about_html = """
-    <div style="text-align: left; padding: 20px; max-width: 800px; margin: auto;">
-        <h2 style="color: #33A1FF;">📌 About</h2>
-        <p style="font-size: 18px; color: #ddd;">
-            The Event Recommendation App is designed to help users discover the best events in Germany 
-            based on their interests & location seen in social media profile. Whether you're looking for concerts, sports matches, 
-            networking meetups, or cultural events, our AI-driven system provides personalized suggestions 
-            so you never miss out on exciting activities.
-        </p>
-    </div>
-    """
 
-    # Key Features Section
-    features_html = """
-        <div style="text-align: left; padding: 20px; max-width: 800px; margin: auto;">
-            <h2 style="color: #33A1FF;">✨ Key Features</h2>
-            <ul style="font-size: 16px; color: #ddd;">
-                <li>✅ <b>Personalized Event Suggestions:</b> AI-powered recommendations based on your interests.</li>
-                <li>📍 <b>Location-Based Filtering:</b> Find events happening near you.</li>
-                <li>🎭 <b>Diverse Event Categories:</b> From music and sports to networking and tech meetups.</li>
-                <li>📆 <b>Interactive Event Listings:</b> View event details, dates, venues, and ticket availability.</li>
-                <li>⏳ <b>Real-Time Updates:</b> Stay informed about trending and newly added events.</li>
-            </ul>
+    # Sample event data
+    cities = similar_texts['location'][:10].values
+    event_titles = similar_texts['title'][:10].values
+    prices = similar_texts['price'][:10].values
+    dates = similar_texts['date'][:10].values
+    addresses = similar_texts['address'][:10].values  # Extracting address
+    tags_list = similar_texts['tags'][:10].values  # Extracting tags
+    
+    # Custom CSS for styling event tiles
+    st.markdown(
+        """
+        <style>
+        .event-tile {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 10px;
+        }
+        .event-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+        }
+        .event-details, .event-extra {
+            font-size: 14px;
+            color: #555;
+            margin-top: 5px;
+        }
+        .tags {
+            margin-top: 8px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+        }
+        .tag {
+            background: #007bff;
+            color: white;
+            padding: 3px 8px;
+            border-radius: 5px;
+            font-size: 12px;
+        }
+        </style>
+        """,
+        unsafe_allow_html=True
+    )
+    
+    # Loop to generate event tiles dynamically
+    for i in range(10):
+        event_name = event_titles[i]
+        event_date = dates[i]
+        city = cities[i]
+        price = prices[i]
+        address = addresses[i] if addresses[i] else "No address provided"
+        tags = tags_list[i].split(",") if isinstance(tags_list[i], str) else []  # Handling multiple tags
+    
+        # Generating tags HTML
+        tags_html = "".join(f'<span class="tag">{tag.strip()}</span>' for tag in tags)
+    
+        event_html = f"""
+        <div class="event-tile">
+            <div class="event-title">{event_name}</div>
+            <div class="event-details">
+                📅 {event_date} - 📍 {city} - 💰 {price}€
+            </div>
+            <div class="event-extra">
+                🏠 {address}
+            </div>
+            <div class="event-extra">
+                🔖 {tags_html}
+            </div>
         </div>
-    """
+        """
+    
+    st.markdown(event_html, unsafe_allow_html=True)
 
 
-    st.markdown(about_html, unsafe_allow_html=True)
-    st.markdown(features_html, unsafe_allow_html=True)
+
+
+    
+    # about_html = """
+    # <div style="text-align: left; padding: 20px; max-width: 800px; margin: auto;">
+    #     <h2 style="color: #33A1FF;">📌 About</h2>
+    #     <p style="font-size: 18px; color: #ddd;">
+    #         The Event Recommendation App is designed to help users discover the best events in Germany 
+    #         based on their interests & location seen in social media profile. Whether you're looking for concerts, sports matches, 
+    #         networking meetups, or cultural events, our AI-driven system provides personalized suggestions 
+    #         so you never miss out on exciting activities.
+    #     </p>
+    # </div>
+    # """
+
+    # # Key Features Section
+    # features_html = """
+    #     <div style="text-align: left; padding: 20px; max-width: 800px; margin: auto;">
+    #         <h2 style="color: #33A1FF;">✨ Key Features</h2>
+    #         <ul style="font-size: 16px; color: #ddd;">
+    #             <li>✅ <b>Personalized Event Suggestions:</b> AI-powered recommendations based on your interests.</li>
+    #             <li>📍 <b>Location-Based Filtering:</b> Find events happening near you.</li>
+    #             <li>🎭 <b>Diverse Event Categories:</b> From music and sports to networking and tech meetups.</li>
+    #             <li>📆 <b>Interactive Event Listings:</b> View event details, dates, venues, and ticket availability.</li>
+    #             <li>⏳ <b>Real-Time Updates:</b> Stay informed about trending and newly added events.</li>
+    #         </ul>
+    #     </div>
+    # """
+
+
+    # st.markdown(about_html, unsafe_allow_html=True)
+    # st.markdown(features_html, unsafe_allow_html=True)
 
 
 
