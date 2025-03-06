@@ -410,7 +410,7 @@ if selection=="My Profile":
   badges_html = '<div class="badge-container">'
   for i, interest in enumerate(user_data["interests"]):
      color = colors[i % len(colors)]  # Cycle through colors if interests exceed color list
-     badges_html += f'<span class="badge" style="--bg-color: {color};">{interest}</span>'
+     badges_html += f'<span class="badge" style="--bg-color: ;">{interest}</span>'
   badges_html += '</div>'
     
   st.markdown(badges_html, unsafe_allow_html=True)
