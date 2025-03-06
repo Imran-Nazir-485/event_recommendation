@@ -278,7 +278,7 @@ if selection=="Home":
         city = cities[i]
         price = prices[i]
         address = addresses[i] if addresses[i] else "No address provided"
-        tags = tags_list[i].values  # Handling multiple tags
+        tags = tags_list[i]  # Handling multiple tags
     
         # Generating tags HTML
         tags_html = "".join(f'<span class="tag">{tag.strip()}</span>' for tag in tags)
