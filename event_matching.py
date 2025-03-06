@@ -227,7 +227,7 @@ if selection=="Home":
 
     
     # Create a slider with a range of 1 to 100
-    value = st.slider("Select a number", min_value=10, max_value=df.shape[0], value=50)
+    value = st.slider("Select a number", min_value=50, max_value=df.shape[0], value=50)
 
 
     # Generate 100 random numbers
@@ -282,7 +282,7 @@ if selection=="Home":
     )
     
     # Loop to generate event tiles dynamically
-    for i in range(10):
+    for i in range(len(random_numbers)):
         event_name = event_titles[i]
         event_date = dates[i]
         city = cities[i]
