@@ -226,11 +226,11 @@ selection=st.sidebar.selectbox(
 if selection=="Home":
 
     # Generate 100 random numbers
-    random_numbers = [random.randint(1, df.shape[0]) for _ in range(100)]
+    random_numbers = [random.randint(1, 50) for _ in range(df.shape[0])]
 
 
     # Sample event data
-    cities = df.ilo[random_numbers,'location'].values
+    cities = df.iloc[random_numbers,'location'].values
     event_titles = df['title'][:20].values
     prices = df['price'][:20].values
     dates = df['date'][:20].values
