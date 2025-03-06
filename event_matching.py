@@ -298,7 +298,7 @@ if selection=="Home":
         </div>
         """
     
-    st.markdown(event_html, unsafe_allow_html=True)
+        st.markdown(event_html, unsafe_allow_html=True)
 
 
 
