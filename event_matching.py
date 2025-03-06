@@ -230,7 +230,7 @@ if selection=="Home":
 
 
     # Sample event data
-    cities = df.iloc[random_numbers,'location'].values
+    cities = df.loc[random_numbers,'location'].values
     event_titles = df['title'][:20].values
     prices = df['price'][:20].values
     dates = df['date'][:20].values
