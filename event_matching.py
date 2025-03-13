@@ -29,13 +29,13 @@ import faiss
 
 
 # file_id = "1NV-lLB8MXRCHH73gHQC7Qyq60qhHxPmN"
-# output_file = "10_events_embedding.db"
+output_file = "faiss_index.bin"
 # https://drive.google.com/file/d/1PZKKUmsP7um-2VVvqTFgY6fqZ1CHGFg0/view?usp=sharing
 # Download the file
 @st.cache_data
 def download_db():
     url = f"https://drive.google.com/uc?id=1PZKKUmsP7um-2VVvqTFgY6fqZ1CHGFg0"
-    gdown.download(url, "faiss_index.bin", quiet=False)
+    gdown.download(url, output_file, quiet=False)
     return output_file
 
 f=download_db()
@@ -45,11 +45,13 @@ index = faiss.read_index(f)
 
 # https://drive.google.com/file/d/1aBFhF98_3bi-McH2jRb0a1b0iRoG1VtU/view?usp=sharing
 # Download the file
+output_file = "metadata.pkl"
 @st.cache_data
 def download_db():
     url = f"https://drive.google.com/uc?id=1aBFhF98_3bi-McH2jRb0a1b0iRoG1VtU"
-    gdown.download(url, "metadata.pkl", quiet=False)
+    gdown.download(url, output_file, quiet=False)
     return output_file
+    
 m=download_db()
 # Load metadata
 with open(m, "rb") as f:
