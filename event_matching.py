@@ -758,7 +758,7 @@ if selection=="Build Profile":
                     🏠 {address}
                 </div>
                 <div class="event-extra">
-                    🔖 {tags}
+                    🔖 {tags[1:-1]}
                 </div>
             </div>
             """
