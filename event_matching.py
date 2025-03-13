@@ -691,8 +691,9 @@ if selection=="Build Profile":
             addresses.append(data[3])
             prices.append(data[5])
             tags_list.append(data[11])
-        for i in tags_list:
-            st.write(i)
+            st.write(data[11])
+        # for i in tags_list:
+        #     st.write(i)
     
 
                 
