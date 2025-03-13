@@ -743,11 +743,10 @@ if selection=="Build Profile":
             city = cities[i]
             price = prices[i]
             address = addresses[i] if addresses[i] else "No address provided"
-            tags = " ".join(tags_list[i][1:-1])  # Handling multiple tags
+            tags = tags_list[i] # Handling multiple tags
         
             # Generating tags HTML
-            tags_html = "".join(f'<span class="tag">{tag.strip()}</span>' for tag in tags)
-        
+            tags_html = f'<span class="tag">{tag[1:-1]}</span>'         
             event_html = f"""
             <div class="event-tile">
                 <div class="event-title">{event_name}</div>
