@@ -45,21 +45,21 @@ df=pd.read_csv(url)
 os.environ["OPENAI_API_KEY"] = df.keys()[0]
 
 
-# Query Text
-query_text = "Event: Tech Conference | Location: Berlin | Date: 2025-06-10"
-# OpenAI API Client
-client = OpenAI()
-# Convert query to embedding
-query_embedding = client.embeddings.create(model="text-embedding-ada-002", input=query_text).data[0].embedding
-query_embedding = np.array(query_embedding).astype('float32').reshape(1, -1)
+# # Query Text
+# query_text = "Event: Tech Conference | Location: Berlin | Date: 2025-06-10"
+# # OpenAI API Client
+# client = OpenAI()
+# # Convert query to embedding
+# query_embedding = client.embeddings.create(model="text-embedding-ada-002", input=query_text).data[0].embedding
+# query_embedding = np.array(query_embedding).astype('float32').reshape(1, -1)
 
-# Search in FAISS
-D, I = index.search(query_embedding, k=3)  # Get top 3 similar rows
+# # Search in FAISS
+# D, I = index.search(query_embedding, k=3)  # Get top 3 similar rows
 
-# Display Results
-st.write("\n🔍 Top Matching Rows:")
-for idx in I[0]:
-    st.write(metadata[idx])
+# # Display Results
+# st.write("\n🔍 Top Matching Rows:")
+# for idx in I[0]:
+#     st.write(metadata[idx])
 
 
 
