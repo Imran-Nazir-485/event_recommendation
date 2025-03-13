@@ -54,8 +54,8 @@ def download_db():
     
 m=download_db()
 # Load metadata
-with open(m, "rb") as f:
-    metadata = pickle.load(f)
+with open(m, "rb") as mk:
+    metadata = pickle.load(mk)
 
 
 file_id = "1ug8pf1M1tes-CJMhS_sso372tvC4RQv8"
