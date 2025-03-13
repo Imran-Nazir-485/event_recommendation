@@ -38,8 +38,10 @@ def download_db():
     gdown.download(url, "faiss_index.bin", quiet=False)
     return output_file
 
+f=download_db()
+
 # Load FAISS index
-index = faiss.read_index(download_db())
+index = faiss.read_index(f)
 
 # https://drive.google.com/file/d/1aBFhF98_3bi-McH2jRb0a1b0iRoG1VtU/view?usp=sharing
 # Download the file
@@ -48,9 +50,9 @@ def download_db():
     url = f"https://drive.google.com/uc?id=1aBFhF98_3bi-McH2jRb0a1b0iRoG1VtU"
     gdown.download(url, "metadata.pkl", quiet=False)
     return output_file
-
+m=download_db()
 # Load metadata
-with open(download_db(), "rb") as f:
+with open(m, "rb") as f:
     metadata = pickle.load(f)
 
 
