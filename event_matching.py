@@ -47,7 +47,8 @@ os.environ["OPENAI_API_KEY"] = df.keys()[0]
 
 # Query Text
 query_text = "Event: Tech Conference | Location: Berlin | Date: 2025-06-10"
-
+# OpenAI API Client
+client = OpenAI()
 # Convert query to embedding
 query_embedding = client.embeddings.create(model="text-embedding-ada-002", input=query_text).data[0].embedding
 query_embedding = np.array(query_embedding).astype('float32').reshape(1, -1)
@@ -548,7 +549,7 @@ if selection=="My Profile":
     
   st.markdown(badges_html, unsafe_allow_html=True)
 
-  st.write(profile_df[profile_df["profile_id"]==profile_id]['profile_summary'].values[0])
+  # st.write(profile_df[profile_df["profile_id"]==profile_id]['profile_summary'].values[0])
 
 
 
