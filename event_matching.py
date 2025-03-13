@@ -673,7 +673,7 @@ if selection=="Build Profile":
         query_embedding = np.array(query_embedding).astype('float32').reshape(1, -1)
         
         # Search in FAISS
-        D, I = index.search(query_embedding, k=2)  # Get top 3 similar rows
+        D, I = index.search(query_embedding, k=10)  # Get top 3 similar rows
         
         # Display Results
         st.write("\n🔍 Top Matching Rows:")
