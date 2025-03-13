@@ -271,7 +271,7 @@ st.markdown(title_html, unsafe_allow_html=True)
 
 selection=st.sidebar.selectbox(
     "☰ Menu",
-    ["Home" ,"Recommended", "My Profile", "Build Profile"])
+    ["Home" ,"Recommended", "My Profile"])
 
 if selection=="Home":
 
