@@ -15,7 +15,7 @@ import numpy as np
 import gdown
 from dotenv import load_dotenv
 import random
-
+import re
 from openai import OpenAI
 # Load environment variables
 load_dotenv()
@@ -744,9 +744,11 @@ if selection=="Build Profile":
             price = prices[i]
             address = addresses[i] if addresses[i] else "No address provided"
             tags = tags_list[i] # Handling multiple tags
+            tags=re.sub("[","",tags)
+            tags=re.sub("]","",tags)
         
             # Generating tags HTML
-            tags_html = "".join(f'<span class="tag">{tag.strip()}</span>' for tag in tags[1:-1].split(","))
+            tags_html = "".join(f'<span class="tag">{tag.strip()}</span>' for tag in tags.split(","))
 
             event_html = f"""
             <div class="event-tile">
