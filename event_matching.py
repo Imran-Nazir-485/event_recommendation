@@ -27,11 +27,30 @@ load_dotenv()
 import pickle
 import faiss
 
+
+# file_id = "1NV-lLB8MXRCHH73gHQC7Qyq60qhHxPmN"
+# output_file = "10_events_embedding.db"
+# https://drive.google.com/file/d/1PZKKUmsP7um-2VVvqTFgY6fqZ1CHGFg0/view?usp=sharing
+# Download the file
+@st.cache_data
+def download_db():
+    url = f"https://drive.google.com/uc?id=1PZKKUmsP7um-2VVvqTFgY6fqZ1CHGFg0"
+    gdown.download(url, "faiss_index.bin", quiet=False)
+    return output_file
+
 # Load FAISS index
-index = faiss.read_index("faiss_index.bin")
+index = faiss.read_index(download_db())
+
+# https://drive.google.com/file/d/1aBFhF98_3bi-McH2jRb0a1b0iRoG1VtU/view?usp=sharing
+# Download the file
+@st.cache_data
+def download_db():
+    url = f"https://drive.google.com/uc?id=1aBFhF98_3bi-McH2jRb0a1b0iRoG1VtU"
+    gdown.download(url, "metadata.pkl", quiet=False)
+    return output_file
 
 # Load metadata
-with open("metadata.pkl", "rb") as f:
+with open(download_db(), "rb") as f:
     metadata = pickle.load(f)
 
 
@@ -45,21 +64,21 @@ df=pd.read_csv(url)
 os.environ["OPENAI_API_KEY"] = df.keys()[0]
 
 
-# # Query Text
-# query_text = "Event: Tech Conference | Location: Berlin | Date: 2025-06-10"
-# # OpenAI API Client
-# client = OpenAI()
-# # Convert query to embedding
-# query_embedding = client.embeddings.create(model="text-embedding-ada-002", input=query_text).data[0].embedding
-# query_embedding = np.array(query_embedding).astype('float32').reshape(1, -1)
+# Query Text
+query_text = "Event: Tech Conference | Location: Berlin | Date: 2025-06-10"
+# OpenAI API Client
+client = OpenAI()
+# Convert query to embedding
+query_embedding = client.embeddings.create(model="text-embedding-ada-002", input=query_text).data[0].embedding
+query_embedding = np.array(query_embedding).astype('float32').reshape(1, -1)
 
-# # Search in FAISS
-# D, I = index.search(query_embedding, k=3)  # Get top 3 similar rows
+# Search in FAISS
+D, I = index.search(query_embedding, k=3)  # Get top 3 similar rows
 
-# # Display Results
-# st.write("\n🔍 Top Matching Rows:")
-# for idx in I[0]:
-#     st.write(metadata[idx])
+# Display Results
+st.write("\n🔍 Top Matching Rows:")
+for idx in I[0]:
+    st.write(metadata[idx])
 
 
 
