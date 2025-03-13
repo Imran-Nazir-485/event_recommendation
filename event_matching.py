@@ -685,13 +685,13 @@ if selection=="Build Profile":
         tags_list=[]
         for idx in I[0]:
             data=metadata[idx].split("|")
-            event_titles.append(data[0])
+            event_titles.append(data[0].split(":")[-1])
             dates.append(data[1])
             cities.append(data[2])
             addresses.append(data[3])
             prices.append(data[5])
             tags_list.append(data[11].split(":")[-1])
-            st.write(data[11].split(":")[-1])
+            # st.write(data[11].split(":")[-1])
         # for i in tags_list:
         #     st.write(i)
     
