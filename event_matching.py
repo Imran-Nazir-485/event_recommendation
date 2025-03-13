@@ -360,42 +360,6 @@ if selection=="Home":
     
         st.markdown(event_html, unsafe_allow_html=True)
 
-
-
-
-    
-    # about_html = """
-    # <div style="text-align: left; padding: 20px; max-width: 800px; margin: auto;">
-    #     <h2 style="color: #33A1FF;">📌 About</h2>
-    #     <p style="font-size: 18px; color: #ddd;">
-    #         The Event Recommendation App is designed to help users discover the best events in Germany 
-    #         based on their interests & location seen in social media profile. Whether you're looking for concerts, sports matches, 
-    #         networking meetups, or cultural events, our AI-driven system provides personalized suggestions 
-    #         so you never miss out on exciting activities.
-    #     </p>
-    # </div>
-    # """
-
-    # # Key Features Section
-    # features_html = """
-    #     <div style="text-align: left; padding: 20px; max-width: 800px; margin: auto;">
-    #         <h2 style="color: #33A1FF;">✨ Key Features</h2>
-    #         <ul style="font-size: 16px; color: #ddd;">
-    #             <li>✅ <b>Personalized Event Suggestions:</b> AI-powered recommendations based on your interests.</li>
-    #             <li>📍 <b>Location-Based Filtering:</b> Find events happening near you.</li>
-    #             <li>🎭 <b>Diverse Event Categories:</b> From music and sports to networking and tech meetups.</li>
-    #             <li>📆 <b>Interactive Event Listings:</b> View event details, dates, venues, and ticket availability.</li>
-    #             <li>⏳ <b>Real-Time Updates:</b> Stay informed about trending and newly added events.</li>
-    #         </ul>
-    #     </div>
-    # """
-
-
-    # st.markdown(about_html, unsafe_allow_html=True)
-    # st.markdown(features_html, unsafe_allow_html=True)
-
-
-
     
 if selection=="Recommended":
   profile_id=st.selectbox("Select",profile_df["profile_id"])
@@ -564,208 +528,208 @@ if selection=="My Profile":
 
 
 
-if selection=="Build Profile":
-    import streamlit as st
+# if selection=="Build Profile":
+#     import streamlit as st
 
-# # App title
-# st.title("🎉 Event Recommendation Form")
+# # # App title
+# # st.title("🎉 Event Recommendation Form")
 
-    # Sidebar for user info
-    st.sidebar.header("User Information")
-    name = st.sidebar.text_input("Your Name")
-    email = st.sidebar.text_input("Email")
+#     # Sidebar for user info
+#     st.sidebar.header("User Information")
+#     name = st.sidebar.text_input("Your Name")
+#     email = st.sidebar.text_input("Email")
 
-    st.write("## Tell us about your event preferences!")
+#     st.write("## Tell us about your event preferences!")
 
-    # Use a form to collect data
-    with st.form("event_preferences_form"):
-        # 1. Event Type
-        event_types = st.multiselect(
-            "What type of events do you enjoy?",
-            ["Concerts", "Conferences", "Sports", "Workshops", "Meetups", "Festivals", "Theater", "Networking"]
-        )
+#     # Use a form to collect data
+#     with st.form("event_preferences_form"):
+#         # 1. Event Type
+#         event_types = st.multiselect(
+#             "What type of events do you enjoy?",
+#             ["Concerts", "Conferences", "Sports", "Workshops", "Meetups", "Festivals", "Theater", "Networking"]
+#         )
     
-        # 2. Format
-        event_format = st.radio("Do you prefer virtual or in-person events?", ["In-Person", "Virtual", "Both"])
+#         # 2. Format
+#         event_format = st.radio("Do you prefer virtual or in-person events?", ["In-Person", "Virtual", "Both"])
     
-        # 3. Interests
-        interests = st.multiselect(
-            "Select your interests",
-            ["Music", "Tech", "Business", "Arts", "Gaming", "Food & Drinks", "Networking", "Sports", "Wellness"]
-        )
+#         # 3. Interests
+#         interests = st.multiselect(
+#             "Select your interests",
+#             ["Music", "Tech", "Business", "Arts", "Gaming", "Food & Drinks", "Networking", "Sports", "Wellness"]
+#         )
     
-        # 4. Time Preferences
-        days_available = st.multiselect(
-            "What days are you available?",
-            ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
-        )
-        time_preference = st.radio("Preferred event time?", ["Morning", "Afternoon", "Evening", "No Preference"])
+#         # 4. Time Preferences
+#         days_available = st.multiselect(
+#             "What days are you available?",
+#             ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+#         )
+#         time_preference = st.radio("Preferred event time?", ["Morning", "Afternoon", "Evening", "No Preference"])
     
-        # 5. Location
-        location = st.text_input("Enter your city or ZIP code")
-        travel_distance = st.slider("How far are you willing to travel? (miles)", 1, 100, 10)
+#         # 5. Location
+#         location = st.text_input("Enter your city or ZIP code")
+#         travel_distance = st.slider("How far are you willing to travel? (miles)", 1, 100, 10)
     
-        # 6. Budget
-        budget = st.radio("Event Budget", ["Free", "Under $20", "$20 - $50", "$50 - $100", "No Limit"])
+#         # 6. Budget
+#         budget = st.radio("Event Budget", ["Free", "Under $20", "$20 - $50", "$50 - $100", "No Limit"])
     
-        # 7. Social Preferences
-        social_preference = st.radio("Do you prefer to attend events alone or with friends?", ["Alone", "With Friends", "Both"])
+#         # 7. Social Preferences
+#         social_preference = st.radio("Do you prefer to attend events alone or with friends?", ["Alone", "With Friends", "Both"])
     
-        # 8. Notifications
-        notify = st.checkbox("Notify me about new events matching my preferences")
+#         # 8. Notifications
+#         notify = st.checkbox("Notify me about new events matching my preferences")
     
-        # Submit button
-        submitted = st.form_submit_button("Submit")
+#         # Submit button
+#         submitted = st.form_submit_button("Submit")
     
-    # Handle form submission
-    if submitted:
-        user_data = {
-            "Name": name,
-            "Email": email,
-            "Event Types": event_types,
-            "Format": event_format,
-            "Interests": interests,
-            "Availability": days_available,
-            "Time Preference": time_preference,
-            "Location": location,
-            "Travel Distance": travel_distance,
-            "Budget": budget,
-            "Social Preference": social_preference,
-            "Notifications": notify
-        }
+#     # Handle form submission
+#     if submitted:
+#         user_data = {
+#             "Name": name,
+#             "Email": email,
+#             "Event Types": event_types,
+#             "Format": event_format,
+#             "Interests": interests,
+#             "Availability": days_available,
+#             "Time Preference": time_preference,
+#             "Location": location,
+#             "Travel Distance": travel_distance,
+#             "Budget": budget,
+#             "Social Preference": social_preference,
+#             "Notifications": notify
+#         }
         
-        st.success("✅ Your preferences have been saved!")
-        # st.json(user_data)  # Show collected data
+#         st.success("✅ Your preferences have been saved!")
+#         # st.json(user_data)  # Show collected data
 
 
-        # Generate a user preferences summary string
-        user_preferences_string = f"""
-        User Preferences for Event Recommendations:
+#         # Generate a user preferences summary string
+#         user_preferences_string = f"""
+#         User Preferences for Event Recommendations:
         
-        Name: {name}  
-        Email: {email}  
-        Preferred Event Types: {", ".join(event_types) if event_types else "No preference"}  
-        Format: {event_format}  
-        Interests: {", ".join(interests) if interests else "No preference"}  
-        Availability: {", ".join(days_available) if days_available else "No preference"}  
-        Time Preference: {time_preference}  
-        Location: {location if location else "Not specified"}  
-        Travel Distance: {travel_distance} km  
-        Budget: {budget}  
-        Social Preference: {social_preference}  
-        Notifications: {"Yes" if notify else "No"}  
-        """
+#         Name: {name}  
+#         Email: {email}  
+#         Preferred Event Types: {", ".join(event_types) if event_types else "No preference"}  
+#         Format: {event_format}  
+#         Interests: {", ".join(interests) if interests else "No preference"}  
+#         Availability: {", ".join(days_available) if days_available else "No preference"}  
+#         Time Preference: {time_preference}  
+#         Location: {location if location else "Not specified"}  
+#         Travel Distance: {travel_distance} km  
+#         Budget: {budget}  
+#         Social Preference: {social_preference}  
+#         Notifications: {"Yes" if notify else "No"}  
+#         """
         
-        # Display the string in Streamlit
-        # st.text_area("Your Saved Preferences:", user_preferences_string, height=250)
+#         # Display the string in Streamlit
+#         # st.text_area("Your Saved Preferences:", user_preferences_string, height=250)
 
 
 
 
 
 
-        # # Query Text
-        query_text = user_preferences_string
-        # OpenAI API Client
-        client = OpenAI()
-        # Convert query to embedding
-        query_embedding = client.embeddings.create(model="text-embedding-ada-002", input=query_text).data[0].embedding
-        query_embedding = np.array(query_embedding).astype('float32').reshape(1, -1)
+#         # # Query Text
+#         query_text = user_preferences_string
+#         # OpenAI API Client
+#         client = OpenAI()
+#         # Convert query to embedding
+#         query_embedding = client.embeddings.create(model="text-embedding-ada-002", input=query_text).data[0].embedding
+#         query_embedding = np.array(query_embedding).astype('float32').reshape(1, -1)
         
-        # Search in FAISS
-        D, I = index.search(query_embedding, k=10)  # Get top 3 similar rows
+#         # Search in FAISS
+#         D, I = index.search(query_embedding, k=10)  # Get top 3 similar rows
         
-        # Display Results
-        st.write("\n🔍 Top Matching Rows:")
-        cities=[]
-        event_titles=[]
-        prices=[]
-        dates=[]
-        addresses=[]
-        tags_list=[]
-        for idx in I[0]:
-            data=metadata[idx].split("|")
-            event_titles.append(data[0].split(":")[-1])
-            dates.append(data[1])
-            cities.append(data[2])
-            addresses.append(data[3])
-            prices.append(data[5])
-            tags_list.append(data[11].split(":")[-1])
-            # st.write(data[11].split(":")[-1])
-        # for i in tags_list:
-        #     st.write(i)
+#         # Display Results
+#         st.write("\n🔍 Top Matching Rows:")
+#         cities=[]
+#         event_titles=[]
+#         prices=[]
+#         dates=[]
+#         addresses=[]
+#         tags_list=[]
+#         for idx in I[0]:
+#             data=metadata[idx].split("|")
+#             event_titles.append(data[0].split(":")[-1])
+#             dates.append(data[1])
+#             cities.append(data[2])
+#             addresses.append(data[3])
+#             prices.append(data[5])
+#             tags_list.append(data[11].split(":")[-1])
+#             # st.write(data[11].split(":")[-1])
+#         # for i in tags_list:
+#         #     st.write(i)
     
 
                 
-        # Custom CSS for styling event tiles
-        st.markdown(
-            """
-            <style>
-            .event-tile {
-                background: #f8f9fa;
-                padding: 15px;
-                border-radius: 10px;
-                box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
-                margin-bottom: 10px;
-            }
-            .event-title {
-                font-size: 18px;
-                font-weight: bold;
-                color: #333;
-            }
-            .event-details, .event-extra {
-                font-size: 14px;
-                color: #555;
-                margin-top: 5px;
-            }
-            .tags {
-                margin-top: 8px;
-                display: flex;
-                flex-wrap: wrap;
-                gap: 5px;
-            }
-            .tag {
-                background: #007bff;
-                color: white;
-                padding: 3px 8px;
-                border-radius: 5px;
-                font-size: 12px;
-            }
-            </style>
-            """,
-            unsafe_allow_html=True
-        )
+#         # Custom CSS for styling event tiles
+#         st.markdown(
+#             """
+#             <style>
+#             .event-tile {
+#                 background: #f8f9fa;
+#                 padding: 15px;
+#                 border-radius: 10px;
+#                 box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+#                 margin-bottom: 10px;
+#             }
+#             .event-title {
+#                 font-size: 18px;
+#                 font-weight: bold;
+#                 color: #333;
+#             }
+#             .event-details, .event-extra {
+#                 font-size: 14px;
+#                 color: #555;
+#                 margin-top: 5px;
+#             }
+#             .tags {
+#                 margin-top: 8px;
+#                 display: flex;
+#                 flex-wrap: wrap;
+#                 gap: 5px;
+#             }
+#             .tag {
+#                 background: #007bff;
+#                 color: white;
+#                 padding: 3px 8px;
+#                 border-radius: 5px;
+#                 font-size: 12px;
+#             }
+#             </style>
+#             """,
+#             unsafe_allow_html=True
+#         )
     
-        # Loop to generate event tiles dynamically
-        for i in range(len(cities)):
-            event_name = event_titles[i]
-            event_date = dates[i]
-            city = cities[i]
-            price = prices[i]
-            address = addresses[i] if addresses[i] else "No address provided"
-            tags = tags_list[i] # Handling multiple tags
-            tags=tags.replace("[", "").replace("]", "")
+#         # Loop to generate event tiles dynamically
+#         for i in range(len(cities)):
+#             event_name = event_titles[i]
+#             event_date = dates[i]
+#             city = cities[i]
+#             price = prices[i]
+#             address = addresses[i] if addresses[i] else "No address provided"
+#             tags = tags_list[i] # Handling multiple tags
+#             tags=tags.replace("[", "").replace("]", "")
             
         
-            # Generating tags HTML
-            tags_html = "".join(f'<span class="tag">{tag.strip()}</span>' for tag in tags.split(","))
+#             # Generating tags HTML
+#             tags_html = "".join(f'<span class="tag">{tag.strip()}</span>' for tag in tags.split(","))
 
-            event_html = f"""
-            <div class="event-tile">
-                <div class="event-title">{event_name}</div>
-                <div class="event-details">
-                    📅 {event_date} - 📍 {city} - 💰 {price}€
-                </div>
-                <div class="event-extra">
-                    🏠 {address}
-                </div>
-                <div class="event-extra">
-                    🔖 {tags_html}
-                </div>
-            </div>
-            """
+#             event_html = f"""
+#             <div class="event-tile">
+#                 <div class="event-title">{event_name}</div>
+#                 <div class="event-details">
+#                     📅 {event_date} - 📍 {city} - 💰 {price}€
+#                 </div>
+#                 <div class="event-extra">
+#                     🏠 {address}
+#                 </div>
+#                 <div class="event-extra">
+#                     🔖 {tags_html}
+#                 </div>
+#             </div>
+#             """
         
-            st.markdown(event_html, unsafe_allow_html=True)
+#             st.markdown(event_html, unsafe_allow_html=True)
     
     
     
