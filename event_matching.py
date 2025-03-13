@@ -744,8 +744,8 @@ if selection=="Build Profile":
             price = prices[i]
             address = addresses[i] if addresses[i] else "No address provided"
             tags = tags_list[i] # Handling multiple tags
-            tags=re.sub("[","",tags)
-            tags=re.sub("]","",tags)
+            tags=tags.replace("[", "").replace("]", "")
+            
         
             # Generating tags HTML
             tags_html = "".join(f'<span class="tag">{tag.strip()}</span>' for tag in tags.split(","))
