@@ -15,11 +15,52 @@ import numpy as np
 import gdown
 from dotenv import load_dotenv
 import random
+
+from openai import OpenAI
 # Load environment variables
 load_dotenv()
 # Load Sentence Transformer model
 # model = SentenceTransformer('all-MiniLM-L6-v2')
 # Page Layout
+
+
+import pickle
+import faiss
+
+# Load FAISS index
+index = faiss.read_index("faiss_index.bin")
+
+# Load metadata
+with open("metadata.pkl", "rb") as f:
+    metadata = pickle.load(f)
+
+
+file_id = "1ug8pf1M1tes-CJMhS_sso372tvC4RQv8"
+output_file = "open_ai_key.txt"
+
+# https://docs.google.com/spreadsheets/d/1Dp6Y9ps4md393F5eRZzaZhu044k4JCmrbYDxWmQ6t2g/edit?gid=0#gid=0
+sheet_id = '1Dp6Y9ps4md393F5eRZzaZhu044k4JCmrbYDxWmQ6t2g' # replace with your sheet's ID
+url=f"https://docs.google.com/spreadsheets/d/{sheet_id}/export?format=csv"
+df=pd.read_csv(url)
+os.environ["OPENAI_API_KEY"] = df.keys()[0]
+
+
+# Query Text
+query_text = "Event: Tech Conference | Location: Berlin | Date: 2025-06-10"
+
+# Convert query to embedding
+query_embedding = client.embeddings.create(model="text-embedding-ada-002", input=query_text).data[0].embedding
+query_embedding = np.array(query_embedding).astype('float32').reshape(1, -1)
+
+# Search in FAISS
+D, I = index.search(query_embedding, k=3)  # Get top 3 similar rows
+
+# Display Results
+st.write("\n🔍 Top Matching Rows:")
+for idx in I[0]:
+    st.write(metadata[idx])
+
+
 
 # Set the page configuration to wide mode
 st.set_page_config(page_title="My App", layout="wide")
