@@ -677,7 +677,98 @@ if selection=="Build Profile":
         
         # Display Results
         st.write("\n🔍 Top Matching Rows:")
+        cities=[]
+        event_titles=[]
+        prices=[]
+        dates=[]
+        addresses=[]
+        tags_list=[]
         for idx in I[0]:
             data=metadata[idx].split("|")
-            
-            st.write(data)
+            event_titles.append(data[0])
+            dates.append(data[1])
+            cities.append(data[2])
+            addresses.append(data[3])
+            prices.append(data[5])
+            tags_list.append(data[11])
+
+                
+            # Custom CSS for styling event tiles
+            st.markdown(
+                """
+                <style>
+                .event-tile {
+                    background: #f8f9fa;
+                    padding: 15px;
+                    border-radius: 10px;
+                    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+                    margin-bottom: 10px;
+                }
+                .event-title {
+                    font-size: 18px;
+                    font-weight: bold;
+                    color: #333;
+                }
+                .event-details, .event-extra {
+                    font-size: 14px;
+                    color: #555;
+                    margin-top: 5px;
+                }
+                .tags {
+                    margin-top: 8px;
+                    display: flex;
+                    flex-wrap: wrap;
+                    gap: 5px;
+                }
+                .tag {
+                    background: #007bff;
+                    color: white;
+                    padding: 3px 8px;
+                    border-radius: 5px;
+                    font-size: 12px;
+                }
+                </style>
+                """,
+                unsafe_allow_html=True
+            )
+        
+        # Loop to generate event tiles dynamically
+        for i in range(len(cities)):
+            event_name = event_titles[i]
+            event_date = dates[i]
+            city = cities[i]
+            price = prices[i]
+            address = addresses[i] if addresses[i] else "No address provided"
+            tags = tags_list[i]  # Handling multiple tags
+        
+            # Generating tags HTML
+            tags_html = "".join(f'<span class="tag">{tag.strip()}</span>' for tag in tags)
+        
+            event_html = f"""
+            <div class="event-tile">
+                <div class="event-title">{event_name}</div>
+                <div class="event-details">
+                    📅 {event_date} - 📍 {city} - 💰 {price}€
+                </div>
+                <div class="event-extra">
+                    🏠 {address}
+                </div>
+                <div class="event-extra">
+                    🔖 {tags_html}
+                </div>
+            </div>
+            """
+        
+            st.markdown(event_html, unsafe_allow_html=True)
+
+
+
+
+
+
+
+
+
+
+
+
