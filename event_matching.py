@@ -221,7 +221,7 @@ st.markdown(title_html, unsafe_allow_html=True)
 
 selection=st.sidebar.selectbox(
     "☰ Menu",
-    ["Home" ,"Recommended", "My Profile"])
+    ["Home" ,"Recommended", "My Profile", "Build Profile"])
 
 if selection=="Home":
 
@@ -509,3 +509,80 @@ if selection=="My Profile":
 
   st.write(profile_df[profile_df["profile_id"]==profile_id]['profile_summary'].values[0])
 
+
+
+
+
+
+if selection=="Build Profile":
+    import streamlit as st
+
+# # App title
+# st.title("🎉 Event Recommendation Form")
+
+# # Sidebar for user info
+# st.sidebar.header("User Information")
+# name = st.sidebar.text_input("Your Name")
+# email = st.sidebar.text_input("Email")
+
+    st.write("## Tell us about your event preferences!")
+
+    # Use a form to collect data
+    with st.form("event_preferences_form"):
+        # 1. Event Type
+        event_types = st.multiselect(
+            "What type of events do you enjoy?",
+            ["Concerts", "Conferences", "Sports", "Workshops", "Meetups", "Festivals", "Theater", "Networking"]
+        )
+    
+        # 2. Format
+        event_format = st.radio("Do you prefer virtual or in-person events?", ["In-Person", "Virtual", "Both"])
+    
+        # 3. Interests
+        interests = st.multiselect(
+            "Select your interests",
+            ["Music", "Tech", "Business", "Arts", "Gaming", "Food & Drinks", "Networking", "Sports", "Wellness"]
+        )
+    
+        # 4. Time Preferences
+        days_available = st.multiselect(
+            "What days are you available?",
+            ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+        )
+        time_preference = st.radio("Preferred event time?", ["Morning", "Afternoon", "Evening", "No Preference"])
+    
+        # 5. Location
+        location = st.text_input("Enter your city or ZIP code")
+        travel_distance = st.slider("How far are you willing to travel? (miles)", 1, 100, 10)
+    
+        # 6. Budget
+        budget = st.radio("Event Budget", ["Free", "Under $20", "$20 - $50", "$50 - $100", "No Limit"])
+    
+        # 7. Social Preferences
+        social_preference = st.radio("Do you prefer to attend events alone or with friends?", ["Alone", "With Friends", "Both"])
+    
+        # 8. Notifications
+        notify = st.checkbox("Notify me about new events matching my preferences")
+    
+        # Submit button
+        submitted = st.form_submit_button("Submit")
+    
+    # Handle form submission
+    if submitted:
+        user_data = {
+            "Name": name,
+            "Email": email,
+            "Event Types": event_types,
+            "Format": event_format,
+            "Interests": interests,
+            "Availability": days_available,
+            "Time Preference": time_preference,
+            "Location": location,
+            "Travel Distance": travel_distance,
+            "Budget": budget,
+            "Social Preference": social_preference,
+            "Notifications": notify
+        }
+        
+        st.success("✅ Your preferences have been saved!")
+        st.json(user_data)  # Show collected data
