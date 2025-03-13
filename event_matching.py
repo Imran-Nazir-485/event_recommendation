@@ -68,21 +68,6 @@ df=pd.read_csv(url)
 os.environ["OPENAI_API_KEY"] = df.keys()[0]
 
 
-# Query Text
-query_text = "Event: Tech Conference | Location: Berlin | Date: 2025-06-10"
-# OpenAI API Client
-client = OpenAI()
-# Convert query to embedding
-query_embedding = client.embeddings.create(model="text-embedding-ada-002", input=query_text).data[0].embedding
-query_embedding = np.array(query_embedding).astype('float32').reshape(1, -1)
-
-# Search in FAISS
-D, I = index.search(query_embedding, k=3)  # Get top 3 similar rows
-
-# Display Results
-st.write("\n🔍 Top Matching Rows:")
-for idx in I[0]:
-    st.write(metadata[idx])
 
 
 
@@ -651,3 +636,46 @@ if selection=="Build Profile":
         
         st.success("✅ Your preferences have been saved!")
         st.json(user_data)  # Show collected data
+
+
+        # Generate a user preferences summary string
+        user_preferences_string = f"""
+        User Preferences for Event Recommendations:
+        
+        Name: {name}  
+        Email: {email}  
+        Preferred Event Types: {", ".join(event_types) if event_types else "No preference"}  
+        Format: {event_format}  
+        Interests: {", ".join(interests) if interests else "No preference"}  
+        Availability: {", ".join(days_available) if days_available else "No preference"}  
+        Time Preference: {time_preference}  
+        Location: {location if location else "Not specified"}  
+        Travel Distance: {travel_distance} km  
+        Budget: {budget}  
+        Social Preference: {social_preference}  
+        Notifications: {"Yes" if notify else "No"}  
+        """
+        
+        # Display the string in Streamlit
+        # st.text_area("Your Saved Preferences:", user_preferences_string, height=250)
+
+
+
+
+
+
+        # # Query Text
+        query_text = user_preferences_string
+        # OpenAI API Client
+        client = OpenAI()
+        # Convert query to embedding
+        query_embedding = client.embeddings.create(model="text-embedding-ada-002", input=query_text).data[0].embedding
+        query_embedding = np.array(query_embedding).astype('float32').reshape(1, -1)
+        
+        # Search in FAISS
+        D, I = index.search(query_embedding, k=3)  # Get top 3 similar rows
+        
+        # Display Results
+        st.write("\n🔍 Top Matching Rows:")
+        for idx in I[0]:
+            st.write(metadata[idx])
