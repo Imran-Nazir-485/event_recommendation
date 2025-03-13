@@ -520,10 +520,10 @@ if selection=="Build Profile":
 # # App title
 # st.title("🎉 Event Recommendation Form")
 
-# # Sidebar for user info
-# st.sidebar.header("User Information")
-# name = st.sidebar.text_input("Your Name")
-# email = st.sidebar.text_input("Email")
+    # Sidebar for user info
+    st.sidebar.header("User Information")
+    name = st.sidebar.text_input("Your Name")
+    email = st.sidebar.text_input("Email")
 
     st.write("## Tell us about your event preferences!")
 
