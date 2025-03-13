@@ -10,3 +10,4 @@ python-dotenv
 httpx<0.25.0
 langchain
 langchain-community
+openai faiss-cpu
