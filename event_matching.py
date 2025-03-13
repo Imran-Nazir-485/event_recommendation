@@ -746,7 +746,8 @@ if selection=="Build Profile":
             tags = tags_list[i] # Handling multiple tags
         
             # Generating tags HTML
-            tags_html = f'<span class="tag">{tag[1:-1]}</span>'         
+            tags_html = "".join(f'<span class="tag">{tag.strip()}</span>' for tag in tags)
+
             event_html = f"""
             <div class="event-tile">
                 <div class="event-title">{event_name}</div>
@@ -757,7 +758,7 @@ if selection=="Build Profile":
                     🏠 {address}
                 </div>
                 <div class="event-extra">
-                    🔖 {tags_html}
+                    🔖 {tags}
                 </div>
             </div>
             """
